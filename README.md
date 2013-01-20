@@ -1,7 +1,7 @@
 # What is `helm-odoc`?
 
-## Short answer -- for who is familiar with [Org mode](http://orgmode.org) and
-   [Helm](https://github.com/emacs-helm/helm):
+## Short answer:
+(for who is familiar with [Org mode](http://orgmode.org) and [Helm](https://github.com/emacs-helm/helm)):
 
 Extend the idea & features of `helm-org` that comes with Helm: you can search a collection
 of Org files for particular headlines, properties and tags.
@@ -54,24 +54,23 @@ with your tags.
 
    1. Download or clone the package from github:
    
-      $ git clone https://github.com/trietlai/helm-odoc.git \
-            ~/path/to/helm-odoc
+    $ git clone https://github.com/trietlai/helm-odoc.git ~/path/to/helm-odoc
 
    2. Edit HELM_DIR variable in Makefile & run make in this
       directory (This step is optional):
 
-      $ cd ~/path/to/helm-odoc
-      $ editor Makefile         # edit HELM_DIR variable
-      $ make
+    $ cd ~/path/to/helm-odoc
+    $ editor Makefile         # edit HELM_DIR variable
+    $ make
 
    3. Add following lines in your .emacs startup:
 
-      (add-to-list 'load-path "~/path/to/helm-odoc")
-      (require 'hod-latex) ; Automatically load helm-odoc
+    (add-to-list 'load-path "~/path/to/helm-odoc")
+    (require 'hod-latex) ; Automatically load helm-odoc
 
-      If you want to enable key bindings and "Doc" menu globally:
+    If you want to enable key bindings and "Doc" menu globally:
 
-      (helm-odoc-global-mode 1)
+    (helm-odoc-global-mode 1)
 
 # Usage
 
@@ -122,9 +121,7 @@ Typical steps you would do when using the hod-latex library:
 
   Completion buffer initially includes all known tags.  You can incrementally filter out
   the tags by typing tag name in the mini-buffer.  You can also combine multiple tags in
-  the query, e.g.:
-
-    math+symbol
+  the query, e.g.: `math+symbol`
 
   it means: match all entries, which are marked by both "math" and "symbol" tags.  For
   advanced usages, please check the "Match Syntax" section in Org mode user guide.
