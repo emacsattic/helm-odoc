@@ -1,0 +1,681 @@
+# -*- mode: org; fill-column: 80 -*-
+
+#+TITLE: Document of LaTeX Packages
+#+OPTIONS: toc:2
+#+STARTUP: showall
+#+PROPERTY: LatexCategory_ALL command environment package parameter
+#+TAGS: color font layout graphics box rule space
+#+TAGS: math symbol greek operator align
+#+TAGS: counter length rubber_length
+#+TAGS: bibliography table reference list
+
+* afterpage
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+  
+  #+BEGIN_SRC latex
+  \usepackage{afterpage}
+  #+END_SRC
+
+  This package implements a command, =\afterpage=, that causes the commands
+  specified in its argument to be expanded after the curent page is output.
+
+  =\clearpage= command flushes out all the unprocessed floats, but it has the
+  effect of making the current page end prematurely. Now you can issue
+
+  #+BEGIN_SRC latex
+  \afterpage{\clearpage}
+  #+END_SRC
+
+  and the current page will be filled up with text as usual, but then a
+  =\clearpage= command will flush out all the floats before the next text page
+  begins.
+  
+  It is difficult to set the text surrounding the long table using longtable
+  environment.  However, if the table is in a separate file, say ~ltfile.tex~, you
+  can float the long table using one of:
+  
+  #+BEGIN_SRC latex
+  \afterpage{\clearpage\input{ltfile}}
+  \afterpage{\clearpage\input{ltfile}\clearpage}.
+  #+END_SRC
+  
+  The first form lets text apear on the same page as the end of the longtable, the
+  second ensures that the surrounding text starts again on a new page.
+  
+  See [[shell:texdoc%20afterpage%20>/dev/null%202>&1][texdoc afterpage]]
+
+* draftcopy
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+  
+  #+BEGIN_SRC latex
+  \usepackage[option]{draftcopy}
+  #+END_SRC
+  
+  This package is used to print on some pages the word DRAFT.
+  
+  Options for this package are:
+  |--------------+-----------------------------------------------------------|
+  | english,     | This package accepts the language options of the babel    |
+  | german, etc. | package. The babel package is not loaded by draftcopy.    |
+  |--------------+-----------------------------------------------------------|
+  | none         | Don't print DRAFT across of any page.                     |
+  |--------------+-----------------------------------------------------------|
+  | first        | Prints DRAFT across only on the  rst page.                |
+  |--------------+-----------------------------------------------------------|
+  | firsttwo     | Prints DRAFT across only on the  rst two pages.           |
+  |--------------+-----------------------------------------------------------|
+  | all          | Prints DRAFT across on all pages of the document.         |
+  |--------------+-----------------------------------------------------------|
+  | bottom       | Prints DRAFT on all pages at the bottom of the page.      |
+  |--------------+-----------------------------------------------------------|
+  | bottomafter  | Prints DRAFT at the bottom of the pages following the     |
+  |              | pages which have DRAFT across them.                       |
+  |--------------+-----------------------------------------------------------|
+  | outline      | The word DRAFT is printed with outlined letters.          |
+  |--------------+-----------------------------------------------------------|
+  | light        | The word DRAFT is printed with a light grey.              |
+  |--------------+-----------------------------------------------------------|
+  | dark         | The word DRAFT is printed with a dark grey.               |
+  |--------------+-----------------------------------------------------------|
+  | textures,    | This package accepts the options of the graphics package. |
+  | dvips, etc.  | The graphics package is not loaded by draftcopy.          |
+  |--------------+-----------------------------------------------------------|
+  
+  Additionally to the options, each feature may be set by commands, which must be
+  placed in the preamble of the document.
+  
+  - \draftcopySetGrey :: Set the intensity of the gray. The argument value range
+       from 0.0 to 1.0, where the smaller values darker.
+     
+  - \draftcopyFirstPage :: The argument specifies the first page onto which
+       DRAFT will be printed. This is the physical page number.
+     
+  - \draftcopyLastPage :: The argument specifies the last page onto which DRAFT
+       will be printed. This is the physical page number.
+     
+  - \draftcopyName :: The first argument specifies the word to be printed
+                      instead of DRAFT, the second, gives the scale factor for
+                      the font to be used. E.g. the english word DRAFT needs
+                      215, the german ENTWURF needs 155.
+		    
+  - \draftcopySetScale :: Change the default size of the word DRAFT
+
+  See [[shell:texdoc%20draftcopy%20>/dev/null%202>&1][texdoc draftcopy]]
+  
+* droping
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+  
+  #+BEGIN_SRC latex
+  \usepackage{droping}
+  ...
+  \dropping[len]{numb}{text}"
+  #+END_SRC
+
+  The ~len~ argument is a LaTeX length (with unit) which states how far from the
+  left margin the dropped text should start. A positive number corresponds to an
+  indentation rightwards, a negative number will force the dropped text to start
+  to the left of the paragraph. The default value is 0pt, meaning the dropped text
+  will be aligned with the rest of the paragraph.
+  
+  The mandatory ~numb~ argument should be an integer number which states how many
+  lines tall the dropped text should be.
+  
+  The last argument, ~text~, is the text which should be dropped. This argument
+  may either be a single letter or several letters without any formatting
+  information, or the argument may start with a font-changing command of the type
+  =\rmfamily=. In the former case, there are no special things to think about, and
+  the dropped text will be type-set in the document's default font. However, if a
+  font-changing command is used, there are two things to be aware of:
+  
+  1. You can only use the font-changing commands =\rmfamily=, =\sffamily=,
+     =\ttfamily=, =\mdseries=, =\bfseries=, =\upshape=, =\itshape=, =\slshape=,
+     or =\scshape= (i. e. not the =\textxx= commands).
+   
+  2. The font-changing command(s) must be followed by a pair of braces, and a
+     blank space for the internal stripping routines to work. Several
+     font-changing commands may be used in series. Thus, both ={This}=,
+     ={\bfseries{} this}=, and ={\ttfamily\itshape{} this}= are examples of
+     valid text arguments to =\dropping=.
+   
+  Note that the construct =\textit{\dropping[len]{numb}{text}}= does not work
+  properly.
+
+* graphicx
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+
+  #+BEGIN_SRC latex
+  \usepackage[driver]{graphicx}
+  ...
+  \includegraphics[key=value, . . . ]{file}
+  #+END_SRC
+
+  ~driver~ is the name of your dvi to postscript converter program. The most
+  widely used program is called dvips.
+
+  Use the command
+  
+  #+BEGIN_SRC latex
+  \includegraphics[key=value, . . . ]{file}
+  #+END_SRC
+
+  to include file into your document. The optional parameter accepts a comma
+  separated list of keys and associated values. The keys can be used to alter
+  the width, height and rotation of the included graphic. Table below lists the
+  most important keys.
+
+  |-----------+----------------------------------------|
+  | Options   |	Description                            |
+  |-----------+----------------------------------------|
+  | width     | scale graphic to the specified width   |
+  | height    | scale graphic to the specified height  |
+  | angle     | rotate graphic counterclockwise        |
+  | scale     | scale graphic                          |
+  |-----------+----------------------------------------|
+
+  E.g.:
+  
+  #+BEGIN_SRC latex
+  \begin{figure}
+    \begin{center}
+      \includegraphics[angle=90, width=0.5\\textwidth]{test}
+    \end{center}
+  \end{figure}
+  #+END_SRC
+  
+  See [[shell:texdoc%20grfguide.pdf%20>/dev/null%202>&1][texdoc Graphics Guide]], [[shell:texdoc%20graphicx.pdf%20>/dev/null%202>&1][texdoc Graphicx Package]], [[shell:texdoc%20graphics.pdf%20>/dev/null%202>&1][texdoc Graphics Package]], 
+
+* hyperref
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+
+  #+BEGIN_SRC latex
+  \usepackage[options]{hyperref}
+  #+END_SRC
+
+  Make sure it comes last of your loaded packages, to give it a fighting chance
+  of not being over-written, since its job is to redefine many LaTeX commands.
+
+  - \href{URL}{text} :: The text is made a hyperlink to the URL; this must be a
+       full URL (relative to the base URL, if that is defined). The special
+       characters ~#~ and =~= do not need to be escaped in any way.
+
+  - \hyperbaseurl{URL} :: A base URL is established, which is prepended to other
+       specified URLs, to make it easier to write portable documents.
+
+  - \hyperimage{image URL} :: The image referenced by the URL is inserted.
+
+  - \hyperdef{category}{name}text :: A target area of the document (the text) is
+       marked, and given the name category.name
+
+  - \hyperref{URL}{category}{name}{text} :: text is made into a link to
+       URL#category.name
+
+  - \hyperlink{name}{text} ::
+  - \hypertarget{name}{text} :: A simple internal link is created with
+       =\hypertarget=, with two parameters of an anchor name, and anchor
+       text. =\hyperlink= has two arguments, the name of a hypertext object
+       defined somewhere by =\hypertarget=, and the text which be used as the
+       link on the page.
+
+  Package Options:
+  ---------------
+  The options can be set either in the optional argument to the =\usepackage=
+  command, or using the =\hypersetup= macro. When the package is loaded, a file
+  hyperref.cfg is read if it can be found, and this is a convenient place to set
+  options on a site-wide basis.
+
+  E.g., the behaviour of a particular file could be controlled by:
+
+  - a site-wide hyperref.cfg setting up:
+    #+BEGIN_SRC latex
+    \hypersetup{backref, pdfpagemode=FullScreen, colorlinks=true}
+    #+END_SRC
+  
+  - A global option in the file, which is passed down to hyperref:
+    #+BEGIN_SRC latex
+    \documentclass[dvips]{article}
+    #+END_SRC
+  
+  - File-specific options in the =\usepackage= commands, which override the ones
+    set in hyperref.cfg:
+    #+BEGIN_SRC latex
+    \usepackage[pdftitle={A Perfect Day},colorlinks=false]{hyperref}
+    #+END_SRC
+
+  + General options (boolean): draft, debug, a4paper (default), a5paper,
+      b5paper, letterpaper, legalpaper, executivepaper.
+
+  + Extension options:
+    
+  |-------------------+-----------------------------------------------------------|
+  | extension         | Set the file extension (eg dvi) which will be appended    |
+  | (text)            | to file links created if you use the xr package.          |
+  |-------------------+-----------------------------------------------------------|
+  | hyperfigures      |                                                           |
+  | (boolean)         |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | backref           | Adds backlink text to the end of each item in the         |
+  | (boolean)         | bibliography, as a list of section numbers. This can      |
+  | (false)           | only work properly if there is a blank line after each    |
+  |                   | \bibitem.                                                 |
+  |-------------------+-----------------------------------------------------------|
+  | pagebackref       | Adds backlink text to the end of each item in the         |
+  | (boolean)         | bibliography, as a list of page numbers.                  |
+  | (false)           |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | hyperindex        | Makes the text of index entries into hyperlinks. Easily   |
+  | (boolean)         | broken ...                                                |
+  | (false)           |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | colorlinks        | Colours the text of links and anchors. The colors         |
+  | (boolean)         | chosen depend on the the type of link. At present the     |
+  | (false)           | only types of link distinguished are citations, page      |
+  |                   | references, URLs, local file references, and other links. |
+  |-------------------+-----------------------------------------------------------|
+  | linkcolor         | Color for normal internal links.                          |
+  | (color) (red)     |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | anchorcolor       | Color for anchor text.                                    |
+  | (color) (black)   |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | citecolor         | Color for bibligraphical citations in text.               |
+  | (color) (green)   |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | filecolor         | Color for URLs which open local files.                    |
+  | (color) (magenta) |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | menucolor         | Color for Acrobat menu items.                             |
+  | (color) (red)     |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | pagecolor         | Color for links to other pages.                           |
+  | (color) (red)     |                                                           |
+  |-------------------+-----------------------------------------------------------|
+  | urlcolor          | Color for linked URLs.                                    |
+  | (color) (cyan)    |                                                           |
+  |-------------------+-----------------------------------------------------------|
+
+  + PDF display and information options
+    
+  |--------------+---------------------------------------------------------|
+  | baseurl      | Sets the base URL of the PDF document                   |
+  | (URL)        |                                                         |
+  |--------------+---------------------------------------------------------|
+  | pdfpagemode  | Determines how the file is opening in Acrobat; the      |
+  | (text)       | possibilies are None, UseThumbs (show thumbails),       |
+  | (none)       | UseOutlines (show bookmarks), and FullScreen. If no     |
+  |              | mode if explicitly chosen, but the bookmarks option is  |
+  |              | set, UseOutlines is used.                               |
+  |--------------+---------------------------------------------------------|
+  | pdftitle     | Sets the document information Title field               |
+  |--------------+---------------------------------------------------------|
+  | pdfauthor    | Sets the document information Author field              |
+  |--------------+---------------------------------------------------------|
+  | pdfsubject   | Sets the document information Subject field             |
+  |--------------+---------------------------------------------------------|
+  | pdfcreator   | Sets the document information Creator field             |
+  |--------------+---------------------------------------------------------|
+  | pdfproducer  | Sets the document information Producer field            |
+  |--------------+---------------------------------------------------------|
+  | pdfkeywords  | Sets the document information Keywords field            |
+  |--------------+---------------------------------------------------------|
+  | pdfview      | Sets the default PDF  view  for each link               |
+  |--------------+---------------------------------------------------------|
+  | pdfstartpage | Determines on which page the PDF file is opened.        |
+  |--------------+---------------------------------------------------------|
+  | pdfstartview | Set the startup page view                               |
+  |--------------+---------------------------------------------------------|
+  | pdfpagescrop | Sets the default PDF crop box for pages. This should be |
+  |              | a set of four numbers                                   |
+  |--------------+---------------------------------------------------------|
+
+  + Configuration options:
+    
+  |------------+---------------------------------------------------------|
+  | raiselinks | In the hypertex driver, the height of links is normally |
+  | (boolean)  | calculcated by the driver as simply the base line of    |
+  | (true)     | contained text; this options forces \special commands   |
+  |            | to reflect the real height of the link (which could     |
+  |            | contain a graphic)                                      |
+  |------------+---------------------------------------------------------|
+  | breaklinks | Allows link text to break across lines; since this      |
+  | (boolean)  | cannot be accomodated in PDF, it is only set true by    |
+  | (false)    | default if the pdftex driver is used. This makes links  |
+  |            | on multiple lines into different PDF links to the same  |
+  |            | target.                                                 |
+  |------------+---------------------------------------------------------|
+  | pageanchor | Determines whether every page is given an implicit      |
+  | (boolean)  | anchor at the top left corner. If this is turned off,   |
+  | (false)    | \tableofcontents will not contain hyperlinks.           |
+  |------------+---------------------------------------------------------|
+  | plainpages | Forces page anchors to be named by the arabic form of   |
+  | (boolean)  | the page number, rather than the formatted form.        |
+  | (true)     |                                                         |
+  |------------+---------------------------------------------------------|
+  | nesting    | Allows links to be nested; no drivers currently         |
+  | (boolea    | support this.                                           |
+  | (false)    |                                                         |
+  |------------+---------------------------------------------------------|
+
+  + Backend drivers options (boolean): pdftex, nativepdf, pdfmark,
+  dvips, hypertex, dviwindo, dvipsone, vtex, latex2html, ps2pdf.  If
+  no driver is specified, the package defaults to loading the hypertex
+  driver.
+
+  NOTE: Refer to hyperref manual for other (seldomly used) options.
+
+  See [[shell:texdoc%20hyperref%20>/dev/null%202>&1][texdoc hyperref]]
+  
+* ifthen
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+
+  #+BEGIN_SRC latex
+  \usepackage{ifthen}
+  \ifthenelse, \newboolean, \provideboolean, \setboolean, \whiledo
+  #+END_SRC
+
+  - =\ifthenelse{test}{then clause}{else clause}= :: Evaluates test as a boolean
+       function, and then executes either then clause or else clause.  test is a
+       boolean expression using the in x connectives, =\and=, =\or=, the unary
+       =\not= and parentheses =\( \)=.
+
+  - =\newboolean{name} and \\provideboolean{name}= :: are provided so the user
+       can easily create new boolean ags. As for =\newcommand=, =\newboolean=
+       generates an error if the command name is not new. =\provideboolean=
+       silently does nothing in that case.
+
+  - =\setboolean{name}{value}= :: value may be either true or false. Note that
+       there is no precedence between =\and= and =\or=. The proposition is
+       evaluated in a left right manner. =\not= only applies to the immediately
+       following proposition.
+
+  - =\whiledo{test}{while clause}= :: With test as above, repeatedly executes
+       while clause while the test remains true.
+
+* longtable
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+
+  #+BEGIN_SRC latex
+  \usepackage{longtable}
+  #+END_SRC
+
+  PARAMETER
+  
+  |-------------+----------------------------------+------------------|
+  | \LTleft     | Glue to the left of the table.   | (\fill)          |
+  |-------------+----------------------------------+------------------|
+  | \LTright    | Glue to the right of the table.  | (\fill)          |
+  |-------------+----------------------------------+------------------|
+  | \LTpre      | Glue before the the table.       | (\bigskipamount) |
+  |-------------+----------------------------------+------------------|
+  | \LTpost     | Glue after the the table.        | (\bigskipamount) |
+  |-------------+----------------------------------+------------------|
+  | \LTcapwidth | The width of a parbox containing | (4in)            |
+  |             | the caption.                     |                  |
+  |-------------+----------------------------------+------------------|
+  | LTchunksize | The number of rows per chunk.    | (20)             |
+  |-------------+----------------------------------+------------------|
+
+   OPTIONAL ARGUMENTS TO \begin{longtable}
+   
+  |------+------------------------------------------------|
+  | none | Position as specified by \LTleft and \LTright. |
+  |------+------------------------------------------------|
+  | [c]  | Centre the table.                              |
+  |------+------------------------------------------------|
+  | [l]  | Place the table ush left.                      |
+  |      |                                                |
+  |------+------------------------------------------------|
+  | [r]  | Place the table ush right.                     |
+  |------+------------------------------------------------|
+
+  COMMANDS TO END TABLE ROWS
+  |-----------------+-------------------------------------------------|
+  | \\              | Specifies the end of a row                      |
+  |-----------------+-------------------------------------------------|
+  | \\[dim]         | Ends row, then adds vertical space (as in the   |
+  |                 | tabular environment).                           |
+  |-----------------+-------------------------------------------------|
+  | \\*             | The same as \\ but disallows a page break       |
+  |                 | after the row.                                  |
+  |-----------------+-------------------------------------------------|
+  | \tabularnewline | Alternative to \\ for use in the scope          |
+  |                 | of \raggedright and similar commands that       |
+  |                 | redefine \\.                                    |
+  |-----------------+-------------------------------------------------|
+  | \kill           | Row is `killed', but is used in calculating     |
+  |                 | widths.                                         |
+  |-----------------+-------------------------------------------------|
+  | \endhead        | Specifies rows to appear at the top of every    |
+  |                 | page.                                           |
+  |-----------------+-------------------------------------------------|
+  | \endfirsthead   | Specifies rows to appear at the top the first   |
+  |                 | page.                                           |
+  |-----------------+-------------------------------------------------|
+  | \endfoot        | Specifies rows to appear at the bottom of every |
+  |                 | page.                                           |
+  |-----------------+-------------------------------------------------|
+  | \endlastfoot    | Specifies rows to appear at the bottom of the   |
+  |                 | last page.                                      |
+  |-----------------+-------------------------------------------------|
+
+  LONGTABLE CAPTION COMMANDS
+  |------------------------+-----------------------------------------------|
+  | \caption{caption}      | Caption `Table ?: <caption>', and a `caption' |
+  |                        | entry in the list of tables.                  |
+  |------------------------+-----------------------------------------------|
+  | \caption[lot]{caption} | Caption `Table ?: <caption>', and a `<lot>'   |
+  |                        | entry in the list of tables.                  |
+  |------------------------+-----------------------------------------------|
+  | \caption[]{caption}    | Caption `Table ?: <caption>', but no entry    |
+  |                        | in the list of tables.                        |
+  |------------------------+-----------------------------------------------|
+  | \caption*{caption}     | Caption `<caption>', but no entry in the list |
+  |                        | of tables.                                    |
+  |------------------------+-----------------------------------------------|
+  
+  COMMANDS AVAILABLE AT THE START OF A ROW
+  |-------------------+------------------------------------------------|
+  | \pagebreak        | Force a page break.                            |
+  |                   |                                                |
+  |-------------------+------------------------------------------------|
+  | \pagebreak[val]   | A `hint' between 0 and 4 of the desirability   |
+  |                   | of a break.                                    |
+  |-------------------+------------------------------------------------|
+  | \nopagebreak      | Prohibit a page break.                         |
+  |-------------------+------------------------------------------------|
+  | \nopagebreak[val] | A `hint' between 0 and 4 of the undesirability |
+  |                   | of a break.                                    |
+  |-------------------+------------------------------------------------|
+  | \newpage          | Force a page break.                            |
+  |-------------------+------------------------------------------------|
+  
+  FOOTNOTE COMMANDS AVAILABLE INSIDE LONGTABLE
+  |---------------+-----------------------------------------------------|
+  | \footnote     | Footnotes, but may not be used in the table head &  |
+  |               | foot.                                               |
+  |---------------+-----------------------------------------------------|
+  | \footnotemark | Footnotemark, may be used in the table head & foot. |
+  |---------------+-----------------------------------------------------|
+  | \footnotetext | Footnote text, use in the table body.               |
+  |---------------+-----------------------------------------------------|
+
+  E.g.:
+  
+  #+BEGIN_SRC latex
+  \begin{longtable}{@{*}r||p{1in}@{*}}
+  KILLED & LINE!!!! \kill
+  \caption[An optional table caption ...]{A long table\label{long}}\\
+  \hline\hline
+  \multicolumn{2}{@{*}c@{*}}%
+  	{This part appears at the top of the table}\\
+  \textsc{First}&\textsc{Second}\\
+  \hline\hline
+  \endfirsthead
+  \caption[]{(continued)}\\
+  \hline\hline
+  \multicolumn{2}{@{*}c@{*}}%
+  	{This part appears at the top of every other page}\\
+  \textbf{First} & \textbf{Second}\\
+  \hline\hline
+  \endhead
+  \hline This goes at the & bottom.\\
+  \hline
+  \endfoot
+  \hline
+  These lines will & appear\\
+  in place of the  & usual foot\\
+  at the end       & of the table\\
+  \hline
+  \endlastfoot
+  \env{longtable} columns are specified & in the \\
+  same way as in the \env{tabular} & environment.\\
+  ...
+  \multicolumn{2}{||c||}{This is a ...}\\
+  ...
+  Some lines may take...&
+  	\raggedleft This last column is a ``p'' column...
+  	\tabularnewline
+  ...
+  Lots of lines & like this.\\
+  ...
+  \hline
+  Lots\footnote{...} of lines & like this.\\
+  Lots of lines & like this\footnote{...}\\
+  \hline
+  Lots of lines & like this.\\ 
+  ... 
+  \end{longtable}
+  #+END_SRC
+
+  See [[shell:texdoc%20longtable%20>/dev/null%202>&1][texdoc longtable]]
+  
+* makeidx
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+
+  #+BEGIN_SRC latex
+  \usepackage{makeidx}
+  \makeindex, \index{key}, \printindex
+  #+END_SRC
+
+  The special indexing commands must be enabled by putting the
+  
+  #+BEGIN_SRC latex
+  \makeindex
+  #+END_SRC
+
+  command into the input file preamble.
+
+  The content of the index is specified with
+  
+  #+BEGIN_SRC latex
+  \index{key}
+  #+END_SRC
+
+  commands, where key is the index entry. You enter the index commands
+  at the points in the text where you want the final index entries to
+  point to.  E.g.:
+
+  \index{hello} 		Plain entry
+  \index{hello!Peter} 		Subentry under hello
+  \index{Sam@\textsl{Sam}} 	Formatted entry
+  \index{Lin@\textbf{Lin}} 	Same as above
+  \index{Jenny|textbf} 		Formatted page number
+  \index{Joe|textit} 		Same as above
+
+  The makeindex program generates a sorted index with the same base file name,
+  but this time with the extension .ind. If now the LaTeX input file is
+  processed again, this sorted index gets included into the document at the
+  point where LaTeX finds
+
+  #+BEGIN_SRC latex
+  \printindex
+  #+END_SRC
+
+* subfigure
+  :PROPERTIES:
+  :LatexCategory: package
+  :END:
+
+  #+BEGIN_SRC latex
+  \usepackage[options]{subfigure}
+  \subfigure[caption]{figure}
+  \subtable[caption]{figure}
+  #+END_SRC
+
+  |--------------+-------------------------------------------------------|
+  | Option       | Description                                           |
+  |--------------+-------------------------------------------------------|
+  | normal       | Provides `normal' captions, this is the default.      |
+  |--------------+-------------------------------------------------------|
+  | hang         | Causes the label to be a hanging indentation to the   |
+  |              | caption paragraph.                                    |
+  |--------------+-------------------------------------------------------|
+  | center       | Causes each line of the paragraph to be separately    |
+  |              | centered.                                             |
+  |--------------+-------------------------------------------------------|
+  | centerlast   | Causes the last line only to be centered.             |
+  |--------------+-------------------------------------------------------|
+  | nooneline    | If a caption fits on one line it will, by default, be |
+  |              | centered.  This option left-justifies the one line    |
+  |              | caption.  scriptsize, ... , Large Sets the font size  |
+  |              | of the captions.                                      |
+  |--------------+-------------------------------------------------------|
+  | up, it, sl,  | Sets the font attributes of the caption labels.       |
+  | sc, md, bf,  |                                                       |
+  | rm, sf or tt |                                                       |
+  |--------------+-------------------------------------------------------|
+
+  ------------------------------------------------------------
+  |                                \subfigtopskip            |
+  ------------------------------------------------------------
+  |                                                          |
+  |                      FIGURE OR TABLE                     |
+  |                                               (Baseline) |
+  ------------------------------------------------------------
+  |                                \subfigcapskip            |
+  |                      ---------------                     |
+  |                      |   CAPTION   |                     |
+  |<...................> --------------- <..................>|
+  |   \subfigcapmargin                     \subfigcapmargin  |
+  ------------------------------------------------------------
+  |                                \subfigbottomskip         |
+  ------------------------------------------------------------
+
+  Example:
+  -------
+  
+  #+BEGIN_SRC latex
+  \newcommand{\goodgap}{%
+  \hspace{\subfigtopskip}%
+  \hspace{\subfigbottomskip}}
+  ...
+  \begin{figure}%
+   \centering
+   \subfigure[First]{...}\goodgap
+   \subfigure[Second Figure]{...}\\
+   \subfigure[Third]{\label{3figs-c}...}%
+   \caption{Three subfigures.}
+   \label{3figs}
+  \end{figure}
+  ...
+  Figure~\ref{3figs} contains two top `subfigures' and
+  Figure~\ref{3figs-c}." t)
+  #+END_SRC
+
+  See [[shell:texdoc%20subfigure%20>/dev/null%202>&1][texdoc subfigure]]
+  

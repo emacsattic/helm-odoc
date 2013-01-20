@@ -1,0 +1,3360 @@
+# -*- mode: org; fill-column: 80 -*-
+
+#+TITLE: LaTeX Reference Document
+#+OPTIONS: toc:2
+#+STARTUP: showall
+#+PROPERTY: LatexCategory_ALL command environment package
+#+TAGS: color font layout graphics box rule space
+#+TAGS: math symbol greek operator align
+#+TAGS: counter length rubber_length
+#+TAGS: bibliography table reference list
+
+* TODO Convert documents into Org mode format [1/3]
+  - [X] LaTeX Reference of TeXMaker
+  - [ ] LaTeX2e info written by Karl Berry
+  - [ ] LaTeX book from Wikibooks.org
+  - [ ] Consolidate and combine all into one
+   
+* Commands
+  
+** Counters: Internal counters used by LaTeX.			    :counter:
+   Everything LaTeX numbers for you has a counter associated with it. The name
+   of the counter is the same as the name of the environment or command that
+   produces the number, except with no \. (enumi - enumiv are used for the
+   nested enumerate environment.) Below is a list of the counters used in
+   LaTeX's standard document classes to control numbering.
+
+   part            paragraph       figure          enumi
+   chapter         subparagraph    table           enumii
+   section         page            footnote        enumiii
+   subsection      equation        mpfootnote      enumiv
+   subsubsection
+ 
+   - [[#d1_addtocounter][\addtocounter]] :: Add a quantity to a counter.
+   - [[#d1_counter-alph][\alph]] :: Print value of a counter using letters.
+   - [[#d1_counter-arabic][\arabic]] :: Print value of a counter using numerals.
+   - [[#d1_counter-fnsymbol][\fnsymbol]] :: Print value of a counter using symbols.
+   - [[#d1_newcounter][\newcounter]] :: Define a new counter.
+   - [[#d1_refstepcounter][\refstepcounter]] :: Add to counter, resetting subsidiary counters.
+   - [[#d1_counter][\roman]] :: Print value of a counter using roman numerals.
+   - [[#d1_setcounter][\setcounter]] :: Set the value of a counter.
+   - [[#d1_stepcounter][\stepcounter]] :: Add to counter, resetting subsidiary counters.
+   - [[#d1_usecounter][\usecounter]] :: Use a specified counter in a list environment.
+   - [[#d1_counter-value][\value]] :: Use the value of a counter in an expression.
+
+*** \addtocounter
+    :PROPERTIES:
+    :CUSTOM_ID: d1_addtocounter
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \addtocounter{counter}{value}
+    #+END_SRC
+
+    The =\addtocounter= command increments the counter by the amount specified
+    by the value argument. The value argument can be negative.
+
+*** \alph
+    :PROPERTIES:
+    :CUSTOM_ID: d1_counter-alph
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \alph{counter}
+    #+END_SRC
+
+    This command causes the value of the counter to be printed in alphabetic
+    characters. The =\alph= command uses lower case alphabetic alphabetic
+    characters, i.e., a, b, c... while the =\Alph= command uses upper case
+    alphabetic characters, i.e., A, B, C....
+
+*** \arabic
+    :PROPERTIES:
+    :CUSTOM_ID: d1_counter-arabic
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \arabic{counter}
+    #+END_SRC
+
+    The =\arabic= command causes the value of the counter to be printed in
+    Arabic numbers, i.e., 1, 2, 3.
+
+*** \fnsymbol
+    :PROPERTIES:
+    :CUSTOM_ID: d1_counter-fnsymbol
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \fnsymbol{counter}
+    #+END_SRC
+
+    The =\fnsymbol= command causes the value of the counter to be printed in a
+    specific sequence of nine symbols that can be used for numbering footnotes.
+    eg. From 1-9
+
+    NB. counter must have a value between 1 and 9 inclusive.
+
+*** \newcounter
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newcounter
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \newcounter{foo}[counter]
+    #+END_SRC
+
+    The =\newcounter= command defines a new counter named ~foo~. The counter is
+    initialized to zero.
+
+    The optional argument =[counter]= causes the counter ~foo~ to be reset
+    whenever the counter named in the optional argument is incremented.
+
+*** \refstepcounter{counter}
+    :PROPERTIES:
+    :CUSTOM_ID: d1_refstepcounter
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \refstepcounter{counter}
+    #+END_SRC
+
+    The =\refstepcounter= command works like =\stepcounter= See section
+    [[#d1_stepcounter][\stepcounter]], except it also defines the current =\ref= value to be the
+    result of =\thecounter=.  =\refstepcounter=
+
+*** \roman
+    :PROPERTIES:
+    :CUSTOM_ID: d1_counter-roman
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \roman{counter}
+    #+END_SRC
+
+    This command causes the value of the counter to be printed in Roman
+    numerals. The =\roman= command uses lower case Roman numerals, i.e., i, ii,
+    iii..., while the =\Roman= command uses upper case Roman numerals, i.e., I,
+    II, III....
+
+*** \stepcounter
+    :PROPERTIES:
+    :CUSTOM_ID: d1_stepcounter
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \stepcounter{counter}
+    #+END_SRC
+
+    The =\stepcounter= command adds one to the counter and resets all subsidiary
+    counters.
+
+*** \setcounter
+    :PROPERTIES:
+    :CUSTOM_ID: d1_setcounter
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \setcounter{counter}{value}
+    #+END_SRC
+
+    The =\setcounter= command sets the value of the counter to that specified by
+    the value argument.
+
+*** \usecounter
+    :PROPERTIES:
+    :CUSTOM_ID: d1_usecounter
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \usecounter{counter}
+    #+END_SRC
+
+    The =\usecounter= command is used in the second argument of the list
+    environment to allow the counter specified to be used to number the list
+    items.
+
+*** \value
+    :PROPERTIES:
+    :CUSTOM_ID: d1_counter-value
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \value{counter}
+    #+END_SRC
+
+    The =\value= command produces the value of the counter named in the
+    mandatory argument. It can be used where LaTeX expects an integer or number,
+    such as the second argument of a =\setcounter= or =\addtocounter= command,
+    or in:
+
+    #+BEGIN_SRC latex
+    \hspace{\value{foo}\parindent}
+    #+END_SRC
+
+    It is useful for doing arithmetic with counters.
+
+** Cross References: Automatic referencing.			  :reference:
+   One reason for numbering things like figures and equations is to refer the
+   reader to them, as in "See Figure 3 for more details."
+   
+   - [[#d1_label][\label]] :: Assign a symbolic name to a piece of text.
+   - [[#d1_pageref][\pageref]] :: Refer to a page number.
+   - [[#d1_ref][\ref]] :: Refer to a section, figure or similar.
+   - [[#d1_eqref][\eqref]] :: Refer to an equation
+  
+*** \label
+    :PROPERTIES:
+    :CUSTOM_ID: d1_label
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \label{key}
+    #+END_SRC
+
+    A =\label= command appearing in ordinary text assigns to the key the number
+    of the current sectional unit; one appearing inside a numbered environment
+    assigns that number to the key.
+
+    A key can consist of any sequence of letters, digits, or punctuation
+    characters. Upper and lowercase letters are different.
+
+    To avoid accidentally creating two labels with the same name, it is common
+    to use labels consisting of a prefix and a suffix separated by a colon. The
+    prefixes conventionally used are
+
+    - =cha= :: for chapters
+    - =sec= :: for lower-level sectioning commands
+    - =fig= :: for figures
+    - =tab= :: for tables
+    - =eq= :: for equations
+
+    Thus, a label for a figure would look like =fig:bandersnatch=.
+    
+*** \pageref
+    :PROPERTIES:
+    :CUSTOM_ID: d1_pageref
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \pageref{key}
+    #+END_SRC
+
+    The =\pageref= command produces the page number of the place in the text
+    where the corresponding =\label= command appears.  ie. where =\label{key}=
+    appears.
+
+*** \ref
+    :PROPERTIES:
+    :CUSTOM_ID: d1_ref
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \ref{key}
+    #+END_SRC
+
+    The =\ref= command produces the number of the sectional unit, equation
+    number, ... of the corresponding =\label= command.
+    
+*** \eqref
+    :PROPERTIES:
+    :CUSTOM_ID: d1_eqref
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \eqref{key}
+    #+END_SRC
+    
+    The =\eqref= command produces the number of equation number of the
+    corresponding =\label= command in brackets e.g. =Equation~\eqref(eq:1)= may
+    be shown as ~Equation (1)~
+
+** Definitions: Define your own commands etc.
+  - [[#d1_newcommand][\newcommand]] :: Define a new command.
+  - [[#d1_newenvironment][\newenvironment]] :: Define a new environment.
+  - [[#d1_newtheorem][\newtheorem]] :: Define a new theorem-like environment.
+  - [[#d1_newfont][\newfont]] :: Define a new font name.
+
+*** \newcommand
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newcommand
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \newcommand{cmd}[args]{definition}
+    \newcommand{cmd}[args][default]{definition}
+    \renewcommand{cmd}[args]{definition}
+    \renewcommand{cmd}[args][default]{definition}
+    #+END_SRC
+
+    These commands define (or redefine) a command.
+
+    - cmd :: A command name beginning with a =\=. For =\newcommand= it must not
+             be already defined and must not begin with =\end=; for
+             =\renewcommand= it must already be defined.
+    - args :: An integer from 1 to 9 denoting the number of arguments of the
+              command being defined. The default is for the command to have no
+              arguments.
+    - def :: If this optional parameter is present, it means that the command's
+             first argument is optional. The default value of the optional
+             argument is =def=.
+    - definition :: The text to be substituted for every occurrence of =cmd=; a
+                    parameter of the form =#n= in =cmd= is replaced by the text
+                    of the nth argument when this substitution takes place.
+ 
+*** \newenvironment
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newenvironment
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \newenvironment{nam}[args]{begdef}{enddef}
+    \newenvironment{nam}[args][default]{begdef}{enddef}
+    \renewenvironment{nam}[args]{begdef}{enddef}
+    #+END_SRC
+
+    These commands define or redefine an environment.
+
+    - nam :: The name of the environment. For =\newenvironment= there must be no
+             currently defined environment by that name, and the command =\nam=
+             must be undefined. For =\renewenvironment= the environment must
+             already be defined.
+    - args :: An integer from 1 to 9 denoting the number of arguments of the
+              newly-defined environment. The default is no arguments.
+    - default :: If this is specified, the first argument is optional, and
+                 default gives the default value for that argument.
+    - begdef :: The text substituted for every occurrence of =\begin{nam}=; a
+                parameter of the form =#n= in =cmd= is replaced by the text of
+                the nth argument when this substitution takes place.
+    - enddef :: The text substituted for every occurrence of =\end{nam}=. It may
+                not contain any argument parameters.
+
+*** \newtheorem
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newtheorem
+    :LatexCategory: command
+    :END:
+   
+    #+BEGIN_SRC latex
+    \newtheorem{env_name}{caption}[within]
+    \newtheorem{env_name}[numbered_like]{caption}
+    #+END_SRC
+
+    This command defines a theorem-like environment.
+
+    - env_name :: The name of the environment to be defined. A string of
+                  letters. It must not be the name of an existing environment or
+                  counter.
+    - caption :: The text printed at the beginning of the environment, right
+                 before the number. This may simply say ~Theorem~, for example.
+    - within :: The name of an already defined counter, usually of a sectional
+                unit. Provides a means of resetting the new theorem counter
+                within the sectional unit.
+    - numbered_like :: The name of an already defined theorem-like environment.
+
+    The =\newtheorem= command may have at most one optional argument.
+   
+*** \newfont							       :font:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newfont
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \newfont{cmd}{font_name}
+    #+END_SRC
+
+    Defines the command name cmd, which must not be currently defined, to be a
+    declaration that selects the font named font_name to be the current font.
+
+** Footnotes: How to produce footnotes.
+   Footnotes can be produced in one of two ways. They can be produced with one
+   command, the =\footnote= command. They can also be produced with two
+   commands, the =\footnotemark= and the =\footnotetext= commands. See the
+   specific command for information on why you would use one over the other.
+
+   - [[#d1_footnote][\footnote]] :: Insert a footnote.
+   - [[#d1_footnotemark][\footnotemark]] :: Insert footnote mark only.
+   - [[#d1_footnotetext][\footnotetext]] :: Insert footnote text only.
+
+*** \footnote
+    :PROPERTIES:
+    :CUSTOM_ID: d1_footnote
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \footnote[number]{text}
+    #+END_SRC
+
+    The =\footnote= command places the numbered footnote text at the bottom of
+    the current page. The optional argument, number, is used to change the
+    default footnote number. This command can only be used in outer paragraph
+    mode; i.e., you cannot use it in sectioning commands like =\chapter=, in
+    figures, tables or in a tabular environment.
+
+*** \footnotemark
+    :PROPERTIES:
+    :CUSTOM_ID: d1_footnotemark
+    :LatexCategory: command
+    :END:
+    
+    The =\footnotemark= command puts the footnote number in the text. This
+    command can be used in inner paragraph mode. The text of the footnote is
+    supplied by the =\footnotetext= command.
+
+    This command can be used to produce several consecutive footnote markers
+    referring to the same footnote by using
+
+    #+BEGIN_SRC latex
+    \footnotemark[\value{footnote}]
+    #+END_SRC
+
+    after the first =\footnote= command.
+
+*** \footnotetext
+    :PROPERTIES:
+    :CUSTOM_ID: d1_footnotetext
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \footnotetext[number]{text}
+    #+END_SRC
+
+    The =\footnotetext= command produces the text to be placed at the bottom of
+    the page. This command can come anywhere after the =\footnotemark=
+    command. The =\footnotetext= command must appear in outer paragraph mode.
+
+    The optional argument, number, is used to change the default footnote number.
+
+** Layout: Controlling the page layout.				:layout:
+   Miscellaneous commands for controlling the general layout of the page.
+
+   - [[#d1_flushbottom][\flushbottom]] :: Make all text pages the same height.
+   - [[#d1_onecolumn][\onecolumn]] :: Use one-column layout.
+   - [[#d1_raggedbottom][\raggedbottom]] :: Allow text pages of differing height.
+   - [[#d1_twocolumn][\twocolumn]] :: Use two-column layout.
+  
+*** \flushbottom
+    :PROPERTIES:
+    :CUSTOM_ID: d1_flushbottom
+    :LatexCategory: command
+    :END:
+
+    The =\flushbottom= declaration makes all text pages the same height, adding
+    extra vertical space when necessary to fill out the page.
+
+    This is the standard if twocolumn mode is selected.
+
+*** \onecolumn
+    :PROPERTIES:
+    :CUSTOM_ID: d1_onecolumn
+    :LatexCategory: command
+    :END:
+
+    The =\onecolumn= declaration starts a new page and produces single-column
+    output.
+
+*** \raggedbottom
+    :PROPERTIES:
+    :CUSTOM_ID: d1_raggedbottom
+    :LatexCategory: command
+    :END:
+
+    The =\raggedbottom= declaration makes all pages the height of the text on
+    that page. No extra vertical space is added.
+
+*** \twocolumn
+    :PROPERTIES:
+    :CUSTOM_ID: d1_twocolumn
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \twocolumn[text]
+    #+END_SRC
+
+    The =\twocolumn= declaration starts a new page and produces two-column
+    output. If the optional text argument is present, it is typeset in
+    one-column mode.
+
+** Lengths: The length commands.				     :length:
+   A length is a measure of distance. Many LaTeX commands take a length as an
+   argument.
+
+   - [[#d1_newlength][\newlength]] :: Define a new length.
+   - [[#d1_setlength][\setlength]] :: Set the value of a length.
+   - [[#d1_addtolength][\addtolength]] :: Add a quantity to a length.
+   - [[#d1_settodepth][\settodepth]] :: Set a length to the depth of something.
+   - [[#d1_settoheight][\settoheight]] :: Set a length to the height of something.
+   - [[#d1_settowidth][\settowidth]] :: Set a length to the width of something.
+   - [[#d1_predefined-length][Predefined lengths]] :: Lengths that are, like, predefined.
+  
+*** \newlength
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newlength
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \newlength{\gnat}
+    #+END_SRC
+
+    The =\newlength= command defines the mandatory argument, =\gnat=, as a
+    length command with a value of 0in. An error occurs if a =\gnat= command
+    already exists.
+    
+*** \setlength
+    :PROPERTIES:
+    :CUSTOM_ID: d1_setlength
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \setlength{\gnat}{length}
+    #+END_SRC
+
+    The =\setlength= command is used to set the value of a length command. The
+    length argument can be expressed in any terms of length LaTeX understands,
+    i.e., inches (in), millimeters (mm), points (pt), etc.
+    
+*** \addtolength
+    :PROPERTIES:
+    :CUSTOM_ID: d1_addtolength
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \addtolength{\gnat}{length}
+    #+END_SRC
+
+    The =\addtolength= command increments a "length command" by the amount
+    specified in the length argument. It can be a negative amount.
+    
+*** \settodepth
+    :PROPERTIES:
+    :CUSTOM_ID: d1_settodepth
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \settodepth{\gnat}{text}
+    #+END_SRC
+
+    The =\settodepth= command sets the value of a length command equal to the
+    depth of the text argument.
+
+*** \settoheight
+    :PROPERTIES:
+    :CUSTOM_ID: d1_settoheight
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \settoheight{\gnat}{text}
+    #+END_SRC
+
+    The =\settoheight= command sets the value of a length command equal to the
+    height of the text argument.
+    
+*** \settowidth
+    :PROPERTIES:
+    :CUSTOM_ID: d1_settowidth
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \settowidth{\gnat}{text}
+    #+END_SRC
+
+    The =\settowidth= command sets the value of a length command equal to the
+    width of the text argument.
+
+*** Predefined lengths
+    :PROPERTIES:
+    :CUSTOM_ID: d1_predefined-length
+    :END:
+
+    - =\width=
+    - =\height=
+    - =\depth=
+    - =\totalheight=
+
+    These length parameters can be used in the arguments of the box-making
+    commands See section Spaces & Boxes. They specify the natural width etc. of
+    the text in the box. =\totalheight= equals =\height= + =\depth=. To make a
+    box with the text stretched to double the natural size, e.g., say
+
+    #+BEGIN_SRC latex
+    \makebox[2\width]{Get a stretcher}
+    #+END_SRC
+
+** Line & Page Breaking: How to insert pagebreaks etc.
+   The first thing LaTeX does when processing ordinary text is to translate your
+   input file into a string of glyphs and spaces. To produce a printed document,
+   this string must be broken into lines, and these lines must be broken into
+   pages. In some environments, you do the line breaking yourself with the =\\=
+   command, but LaTeX usually does it for you.
+
+   - [[#d1_break-line][\\]] :: Start a new line.
+   - [[#d1_break-hypenation][\- (hyphenation)]] :: Insert explicit hyphenation.
+   - [[#d1_cleardoublepage][\cleardoublepage]] :: Start a new right-hand page.
+   - [[#d1_clearpage][\clearpage]] :: Start a new page.
+   - [[#d1_enlargethispage][\enlargethispage]] :: Enlarge the current page a bit.
+   - [[#d1_fussy][\fussy]] :: Be fussy about line breaking.
+   - [[#d1_hyphenation][\hyphenation]] :: Tell LaTeX how to hyphenate a word.
+   - [[#d1_linebreak][\linebreak]] :: Break the line.
+   - [[#d1_newline][\newline]] :: Break the line prematurely.
+   - [[#d1_newpage][\newpage]] :: Start a new page.
+   - [[#d1_nolinebreak][\nolinebreak]] :: Don't break the current line.
+   - [[#d1_nopagebreak][\nopagebreak]] :: Don't make a page break here.
+   - [[#d1_pagebreak][\pagebreak]] :: Please make a page break here.
+   - [[#d1_sloppy][\sloppy]] :: Be sloppy about line breaking.
+  
+*** \\ (new line)
+    :PROPERTIES:
+    :CUSTOM_ID: d1_break-line
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \\[*][extra-space]
+    #+END_SRC
+
+    The =\\= command tells LaTeX to start a new line. It has an optional
+    argument, extra-space, that specifies how much extra vertical space is to be
+    inserted before the next line. This can be a negative amount.
+
+    The =\\*= command is the same as the ordinary =\\= command except that it
+    tells LaTeX not to start a new page after the line.
+
+*** \- (hypenation)
+    :PROPERTIES:
+    :CUSTOM_ID: d1_break-hypenation
+    :LatexCategory: command
+    :END:
+
+    The =\-= command tells LaTeX that it may hyphenate the word at that
+    point. LaTeX is very good at hyphenating, and it will usually find all
+    correct hyphenation points. The =\-= command is used for the exceptional
+    cases.
+
+    Note that when you insert =\-= commands in a word, the word will only be
+    hyphenated at those points and not at any of the hyphenation points that LaTeX
+    might otherwise have chosen.
+  
+*** \cleardoublepage
+    :PROPERTIES:
+    :CUSTOM_ID: d1_cleardoublepage
+    :LatexCategory: command
+    :END:
+
+    The =\cleardoublepage= command ends the current page and causes all figures
+    and tables that have so far appeared in the input to be printed. In a
+    two-sided printing style, it also makes the next page a right-hand
+    (odd-numbered) page, producing a blank page if necessary.
+
+*** \clearpage
+    :PROPERTIES:
+    :CUSTOM_ID: d1_clearpage
+    :LatexCategory: command
+    :END:
+
+    The =\clearpage= command ends the current page and causes all figures and
+    tables that have so far appeared in the input to be printed.
+    
+*** \enlargethispage
+    :PROPERTIES:
+    :CUSTOM_ID: d1_enlargethispage
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \enlargethispage{size}
+    \enlargethispage*{size}
+    #+END_SRC
+
+    Enlarge the =\textheight= for the current page by the specified amount;
+    e.g. =\enlargethispage{\baselineskip}= will allow one additional line.
+
+    The starred form tries to squeeze the material together on the page as much
+    as possible. This is normally used together with an explicit =\pagebreak=.
+
+*** \fussy
+    :PROPERTIES:
+    :CUSTOM_ID: d1_fussy
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \fussy
+    #+END_SRC
+
+    This declaration (which is the default) makes TeX more fussy about line
+    breaking. This can avoids too much space between words, but may produce
+    overfull boxes.
+
+    This command cancels the effect of a previous =\sloppy= command. section
+    =\sloppy=
+    
+*** \hyphenation
+    :PROPERTIES:
+    :CUSTOM_ID: d1_hyphenation
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \hyphenation{words}
+    #+END_SRC
+
+    The =\hyphenation= command declares allowed hyphenation points, where words
+    is a list of words, separated by spaces, in which each hyphenation point is
+    indicated by a - character.
+
+*** \linebreak
+    :PROPERTIES:
+    :CUSTOM_ID: d1_linebreak
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \linebreak[number]
+    #+END_SRC
+
+    The =\linebreak= command tells LaTeX to break the current line at the point
+    of the command. With the optional argument, number, you can convert the
+    =\linebreak= command from a demand to a request. The number must be a number
+    from 0 to 4. The higher the number, the more insistent the request is.
+
+    The =\linebreak= command causes LaTeX to stretch the line so it extends to
+    the right margin.
+    
+*** \newline
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newline
+    :LatexCategory: command
+    :END:
+
+    The =\newline= command breaks the line right where it is. It can only be
+    used in paragraph mode.
+
+*** \newpage
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newpage
+    :LatexCategory: command
+    :END:
+    
+    The =\newpage= command ends the current page.
+    
+*** \nolinebreak
+    :PROPERTIES:
+    :CUSTOM_ID: d1_nolinebreak
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \nolinebreak[number]
+    #+END_SRC
+
+    The =\nolinebreak= command prevents LaTeX from breaking the current line at
+    the point of the command. With the optional argument, number, you can
+    convert the =\nolinebreak= command from a demand to a request. The number
+    must be a number from 0 to 4. The higher the number, the more insistent the
+    request is.
+
+*** \nopagebreak
+    :PROPERTIES:
+    :CUSTOM_ID: d1_nopagebreak
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \nopagebreak[number]
+    #+END_SRC
+
+    The =\nopagebreak= command prevents LaTeX from breaking the current page at
+    the point of the command. With the optional argument, number, you can
+    convert the =\nopagebreak= command from a demand to a request. The number
+    must be a number from 0 to 4. The higher the number, the more insistent the
+    request is.
+
+*** \pagebreak
+    :PROPERTIES:
+    :CUSTOM_ID: d1_pagebreak
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \pagebreak[number]
+    #+END_SRC
+
+    The =\pagebreak= command tells LaTeX to break the current page at the point
+    of the command. With the optional argument, number, you can convert the
+    =\pagebreak= command from a demand to a request. The number must be a number
+    from 0 to 4. The higher the number, the more insistent the request is.
+
+*** \sloppy
+    :PROPERTIES:
+    :CUSTOM_ID: d1_sloppy
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \sloppy
+    #+END_SRC
+
+    This declaration makes TeX less fussy about line breaking. This can prevent
+    overfull boxes, but may leave too much space between words.
+
+    Lasts until a =\fussy= command is issued. section [[#d1_fussy][\fussy]].
+
+** Making Paragraphs: Paragraph commands.
+   A paragraph is ended by one or more completely blank lines -- lines not
+   containing even a %. A blank line should not appear where a new paragraph
+   cannot be started, such as in math mode or in the argument of a sectioning
+   command.
+
+  - [[#d1_indent][\indent]] :: Indent this paragraph.
+  - [[#d1_noindent][\noindent]] :: Do not indent this paragraph.
+  - [[#d1_par][\par]] :: Another way of writing a blank line.
+
+*** \indent
+    :PROPERTIES:
+    :CUSTOM_ID: d1_indent
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \indent
+    #+END_SRC
+
+    This produces a horizontal space whose width equals the width of the
+    paragraph indentation. It is used to add paragraph indentation where it
+    would otherwise be suppressed.
+    
+*** \noindent
+    :PROPERTIES:
+    :CUSTOM_ID: d1_noindent
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \noindent
+    #+END_SRC
+
+    When used at the beginning of the paragraph, it suppresses the paragraph
+    indentation. It has no effect when used in the middle of a paragraph.
+
+*** \par
+    :PROPERTIES:
+    :CUSTOM_ID: d1_par
+    :LatexCategory: command
+    :END:
+
+    Equivalent to a blank line; often used to make command or environment
+    definitions easier to read.
+
+** Margin Notes: Putting remarks in the margin.
+   The command =\marginpar[left]{right}= creates a note in the margin. The first
+   line will be at the same height as the line in the text where the
+   =\marginpar= occurs.
+
+   When you only specify the mandatory argument right, the text will be placed
+
+   - in the right margin for one-sided layout
+   - in the outside margin for two-sided layout
+   - in the nearest margin for two-column layout.
+
+   By issuing the command =\reversemarginpar=, you can force the marginal notes
+   to go into the opposite (inside) margin.
+
+   When you specify both arguments, left is used for the left margin, and right
+   is used for the right margin.
+
+   The first word will normally not be hyphenated; you can enable hyphenation by
+   prefixing the first word with a =\hspace{0pt}= command.
+
+** Math Formulae: How to create mathematical formulae.		       :math:
+   There are three environments that put LaTeX in math mode:
+
+   - math :: For Formulae that appear right in the text.
+   - displaymath :: For Formulae that appear on their own line.
+   - equation :: The same as the displaymath environment except that it adds an
+                 equation number in the right margin.
+
+   The math environment can be used in both paragraph and LR mode, but the
+   displaymath and equation environments can be used only in paragraph mode. The
+   math and displaymath environments are used so often that they have the
+   following short forms:
+   
+    =\(...\)=     instead of     =\begin{math}...\end{math}=
+
+    =\[...\]=     instead of     =\begin{displaymath}...\end{displaymath}=
+
+   In fact, the math environment is so common that it has an even shorter form:
+
+    =$ ... $=     instead of     =\(...\)=
+
+  - Subscripts & Superscripts :: Also known as exponent or index.
+  - Math Symbols :: Various mathematical squiggles.
+  - Spacing in Math Mode :: Thick, medium, thin and negative spaces.
+  - Math Miscellany :: Stuff that doesn't fit anywhere else.
+
+*** Subscripts & Superscripts
+    To get an expression exp to appear as a subscript, you just type
+    =_{exp}=. To get exp to appear as a superscript, you type =^{exp}=. LaTeX
+    handles superscripted superscripts and all of that stuff in the natural
+    way. It even does the right thing when something has both a subscript and a
+    superscript.
+
+*** Math Symbols
+    LaTeX provides almost any mathematical symbol you're likely to need. The
+    commands for generating them can be used only in math mode. For example, if
+    you include =$\pi$= in your source, you will get the symbol in your output.
+
+*** Spacing in Math Mode					      :space:
+    In a math environment, LaTeX ignores the spaces you type and puts in the
+    spacing that it thinks is best. LaTeX formats mathematics the way it's done
+    in mathematics texts. If you want different spacing, LaTeX provides the
+    following four commands for use in math mode:
+
+    - =\;= :: a thick space
+    - =\:= :: a medium space
+    - =\,= :: a thin space
+    - =\!= :: a negative thin space
+
+*** Math Miscellany						     :symbol:
+
+**** \cdots
+     :PROPERTIES:
+     :CUSTOM_ID: d1_cdots
+     :LatexCategory: command
+     :END:
+     
+     Produces a horizontal ellipsis where the dots are raised to the center of
+     the line. eg.
+    
+**** \ddots
+     :PROPERTIES:
+     :CUSTOM_ID: d1_ddots
+     :LatexCategory: command
+     :END:
+     
+     Produces a diagonal ellipsis. eg.
+    
+**** \frac{num}{den}
+     :PROPERTIES:
+     :CUSTOM_ID: d1_frac
+     :LatexCategory: command
+     :END:
+     
+     Produces the fraction num divided by den. eg.
+    
+**** \ldots
+     :PROPERTIES:
+     :CUSTOM_ID: d1_ldots
+     :LatexCategory: command
+     :END:
+     
+     Produces an ellipsis. This command works in any mode, not just math
+     mode. eg.
+    
+**** \overbrace{text}
+     :PROPERTIES:
+     :CUSTOM_ID: d1_overbrace
+     :LatexCategory: command
+     :END:
+     
+     Generates a brace over text. eg.
+    
+**** \overline{text}
+     :PROPERTIES:
+     :CUSTOM_ID: d1_overline
+     :LatexCategory: command
+     :END:
+     
+     Causes the argument text to be overlined. eg.
+    
+**** \sqrt[root]{arg}
+     :PROPERTIES:
+     :CUSTOM_ID: d1_sqrt
+     :LatexCategory: command
+     :END:
+     
+     Produces the square root of its argument. The optional argument, root,
+     determines what root to produce, i.e., the cube root of =x+y= would be
+     typed as =$\sqrt[3]{x+y}$=. eg.
+    
+**** \underbrace{text}
+     :PROPERTIES:
+     :CUSTOM_ID: d1_underbrace
+     :LatexCategory: command
+     :END:
+     
+     Generates text with a brace underneath. eg.
+    
+**** \underline{text}
+     :PROPERTIES:
+     :CUSTOM_ID: d1_underline
+     :LatexCategory: command
+     :END:
+     
+     Causes the argument text to be underlined. This command can also be used in
+     paragraph and LR modes. eg.
+    
+**** \vdots
+     :PROPERTIES:
+     :CUSTOM_ID: d1_vdots
+     :LatexCategory: command
+     :END:
+     
+     Produces a vertical ellipsis. eg.
+
+** Modes: Paragraph, Math or LR modes.
+   When LaTeX is processing your input text, it is always in one of three modes:
+
+   - Paragraph mode
+   - Math mode
+   - Left-to-right mode, called LR mode for short
+
+   LaTeX changes mode only when it goes up or down a staircase to a different
+   level, though not all level changes produce mode changes. Mode changes occur
+   only when entering or leaving an environment, or when LaTeX is processing the
+   argument of certain text-producing commands.
+
+   "Paragraph mode" is the most common; it's the one LaTeX is in when processing
+   ordinary text. In that mode, LaTeX breaks your text into lines and breaks the
+   lines into pages. LaTeX is in "math mode" when it's generating a mathematical
+   formula. In "LR mode", as in paragraph mode, LaTeX considers the output that
+   it produces to be a string of words with spaces between them. However, unlike
+   paragraph mode, LaTeX keeps going from left to right; it never starts a new
+   line in LR mode. Even if you put a hundred words into an =\mbox=, LaTeX would
+   keep typesetting them from left to right inside a single box, and then
+   complain because the resulting box was too wide to fit on the line.
+
+   LaTeX is in LR mode when it starts making a box with an =\mbox= command. You
+   can get it to enter a different mode inside the box - for example, you can
+   make it enter math mode to put a formula in the box. There are also several
+   text-producing commands and environments for making a box that put LaTeX in
+   paragraph mode. The box make by one of these commands or environments will be
+   called a parbox. When LaTeX is in paragraph mode while making a box, it is
+   said to be in "inner paragraph mode". Its normal paragraph mode, which it
+   starts out in, is called "outer paragraph mode".
+   
+** Page Styles: Various styles of page layout.
+   The =\documentclass= command determines the size and position of the page's
+   head and foot. The page style determines what goes in them.
+  
+   - [[#d1_maketitle][\maketitle]] :: Generate a title page.
+   - [[#d1_author][\author]] :: Who wrote this stuff?
+   - [[#d1_date][\date]] :: The date the document was created.
+   - [[#d1_thanks][\thanks]] :: A special form of footnote.
+   - [[#d1_title][\title]] :: How to set the document title.
+   - [[#d1_pagenumbering][\pagenumbering]] :: Set the style used for page numbers.
+   - [[#d1_pagestyle][\pagestyle]] :: Change the headings/footings style.
+   - [[#d1_markboth][\markboth]] :: Set left and right headings.
+   - [[#d1_markright][\markright]] :: Set right heading only.
+   - [[#d1_thispagestyle][\thispagestyle]] :: Change the headings/footings style for this page.
+
+*** \maketitle
+    :PROPERTIES:
+    :CUSTOM_ID: d1_maketitle
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \maketitle
+    #+END_SRC
+
+    The =\maketitle= command generates a title on a separate title page - except
+    in the article class, where the title normally goes at the top of the first
+    page. Information used to produce the title is obtained from the following
+    declarations:
+
+*** \author
+    :PROPERTIES:
+    :CUSTOM_ID: d1_author
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \author{names}
+    #+END_SRC
+
+    The =\author= command declares the author(s), where names is a list of
+    authors separated by =\and= commands. Use =\\= to separate lines within a
+    single author's entry -- for example, to give the author's institution or
+    address.
+
+*** \date
+    :PROPERTIES:
+    :CUSTOM_ID: d1_date
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \date{text}
+    #+END_SRC
+
+    The =\date= command declares text to be the document's date. With no =\date=
+    command, the current date is used.
+   
+*** \thanks
+    :PROPERTIES:
+    :CUSTOM_ID: d1_thanks
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \thanks{text}
+    #+END_SRC
+
+    The =\thanks= command produces a =\footnote= to the title.
+
+*** \title
+    :PROPERTIES:
+    :CUSTOM_ID: d1_title
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \title{text}
+    #+END_SRC
+
+    The =\title= command declares text to be the title. Use =\\= to tell LaTeX
+    where to start a new line in a long title.
+
+*** \pagenumbering
+    :PROPERTIES:
+    :CUSTOM_ID: d1_pagenumbering
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \pagenumbering{num_style}
+    #+END_SRC
+
+    Specifies the style of page numbers. Possible values of num_style are:
+
+    - =arabic= :: Arabic numerals
+    - =roman= :: Lowercase Roman numerals
+    - =Roman= :: Uppercase Roman numerals
+    - =alph= :: Lowercase letters
+    - =Alph= :: Uppercase letters
+
+*** \pagestyle
+    :PROPERTIES:
+    :CUSTOM_ID: d1_pagestyle
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \pagestyle{option}
+    #+END_SRC
+
+    The =\pagestyle= command changes the style from the current page on
+    throughout the remainder of your document.
+
+    The valid options are:
+
+    - =plain= :: Just a plain page number.
+    - =empty= :: Produces empty heads and feet - no page numbers.
+    - =headings= :: Puts running headings on each page. The document style
+                    specifies what goes in the headings.
+    - =myheadings= :: You specify what is to go in the heading with the
+                      =\markboth= or the =\markright= commands.
+
+*** \markboth
+    :PROPERTIES:
+    :CUSTOM_ID: d1_markboth
+    :LatexCategory: command
+    :END:
+
+     #+BEGIN_SRC latex
+     \markboth{left head}{right head}
+     #+END_SRC
+
+     The =\markboth= command is used in conjunction with the page style
+     myheadings for setting both the left and the right heading. You should note
+     that a "left-hand heading" is generated by the last =\markboth= command
+     before the end of the page, while a "right-hand heading" is generated by
+     the first =\markboth= or =\markright= that comes on the page if there is
+     one, otherwise by the last one before the page.
+
+*** \markright
+    :PROPERTIES:
+    :CUSTOM_ID: d1_markright
+    :LatexCategory: command
+    :END:
+
+     #+BEGIN_SRC latex
+     \markright{right head}
+     #+END_SRC
+
+     The =\markright= command is used in conjunction with the page style
+     myheadings for setting the right heading, leaving the left heading
+     unchanged. You should note that a "left-hand heading" is generated by the
+     last =\markboth= command before the end of the page, while a "right-hand
+     heading" is generated by the first =\markboth= or =\markright= that comes
+     on the page if there is one, otherwise by the last one before the page.
+
+*** \thispagestyle
+    :PROPERTIES:
+    :CUSTOM_ID: d1_thispagestyle
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \thispagestyle{option}
+    #+END_SRC
+
+    The =\thispagestyle= command works in the same manner as the =\pagestyle=
+    command except that it changes the style for the current page only.
+
+** Sectioning: How to section properly.
+   Sectioning commands provide the means to structure your text into units.
+
+   - \part
+   - \chapter (report and book class only)
+   - \section
+   - \subsection
+   - \subsubsection
+   - \paragraph
+   - \subparagraph
+     
+   All sectioning commands take the same general form, i.e.,
+
+   #+BEGIN_SRC latex
+   \chapter[optional]{title}
+   #+END_SRC
+
+   In addition to providing the heading in the text, the mandatory argument of
+   the sectioning command can appear in two other places:
+   
+   1. The table of contents
+   2. The running head at the top of the page
+
+   You may not want the same thing to appear in these other two places as
+   appears in the text heading. To handle this situation, the sectioning
+   commands have an optional argument that provides the text for these other two
+   purposes.
+
+   All sectioning commands have =*-forms= that print a title, but do not include
+   a number and do not make an entry in the table of contents.
+
+*** \appendix
+    :PROPERTIES:
+    :CUSTOM_ID: d1_appendix
+    :LatexCategory: command
+    :END:
+
+   The =\appendix= command changes the way sectional units are numbered. The
+   =\appendix= command generates no text and does not affect the numbering of
+   parts. The normal use of this command is something like
+
+   #+BEGIN_SRC latex
+   \chapter{The First Chapter}
+   ...
+   \appendix
+   \chapter{The First Appendix}
+   #+END_SRC
+
+** Spaces & Boxes: All the associated commands.
+   All the predefined length parameters See section Predefined lengths can be
+   used in the arguments of the box-making commands.
+
+   - Horizontal space
+   - [[#d1_dotfill][\dotfill]] :: Stretchable horizontal dots.
+   - [[#d1_hfill][\hfill]] :: Stretchable horizontal space.
+   - [[#d1_hrulefill][\hrulefill]] :: Stretchable horizontal rule.
+   - [[#d1_hspace][\hspace]] :: Fixed horizontal space. Vertical space
+   - [[#d1_addvspace][\addvspace]] :: Fixed vertical space.
+   - [[#d1_bigskip][\bigskip]] :: Fixed vertical space.
+   - [[#d1_medskip][\medskip]] :: Fixed vertical space.
+   - [[#d1_smallskip][\smallskip]] :: Fixed vertical space.
+   - [[#d1_vfill][\vfill]] :: Stretchable vertical space.
+   - [[#d1_vspace][\vspace]] :: Fixed vertical space. Boxes
+   - [[#d1_fbox][\fbox]] :: Framebox.
+   - [[#d1_framebox][\framebox]] :: Framebox, adjustable position.
+   - [[#d1_lrbox][lrbox]] :: An environment like \sbox.
+   - [[#d1_makebox][\makebox]] :: Box, adjustable position.
+   - [[#d1_mbox][\mbox]] :: Box.
+   - [[#d1_newsavebox][\newsavebox]] :: Declare a name for saving a box.
+   - [[#d1_parbox][\parbox]] :: Box with text in paragraph mode.
+   - [[#d1_raisebox][\raisebox]] :: Raise or lower text.
+   - [[#d1_rule][\rule]] :: Lines and squares.
+   - [[#d1_savebox][\savebox]] :: Like \makebox, but save the text for later use.
+   - [[#d1_sbox][\sbox]] :: Like \mbox, but save the text for later use.
+   - [[#d1_usebox][\usebox]] :: Print saved text.
+
+*** \dotfill						      :rubber_length:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_dotfill
+    :LatexCategory: command
+    :END:
+
+    The =\dotfill= command produces a "rubber length" that produces dots instead
+    of just spaces.
+
+*** \hfill						      :rubber_length:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_hfill
+    :LatexCategory: command
+    :END:
+    
+    The =\hfill= fill command produces a "rubber length" which can stretch or
+    shrink horizontally. It will be filled with spaces.
+    
+*** \hrulefill						      :rubber_length:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_hrulefill
+    :LatexCategory: command
+    :END:
+
+    The =\hrulefill= fill command produces a "rubber length" which can stretch or
+    shrink horizontally. It will be filled with a horizontal rule.
+
+*** \hspace							      :space:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_hspace
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \hspace[*]{length}
+    #+END_SRC
+
+    The =\hspace= command adds horizontal space. The length of the space can be
+    expressed in any terms that LaTeX understands, i.e., points, inches, etc. You
+    can add negative as well as positive space with an =\hspace= command. Adding
+    negative space is like backspacing.
+
+    LaTeX removes horizontal space that comes at the end of a line. If you don't
+    want LaTeX to remove this space, include the optional =*= argument. Then the
+    space is never removed.
+    
+*** \addvspace							      :space:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_addvspace
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \addvspace{length}
+    #+END_SRC
+
+    The =\addvspace= command normally adds a vertical space of height
+    length. However, if vertical space has already been added to the same point
+    in the output by a previous =\addvspace= command, then this command will not
+    add more space than needed to make the natural length of the total vertical
+    space equal to length.
+
+*** \bigskip							      :space:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_bigskip
+    :LatexCategory: command
+    :END:
+    
+    The =\bigskip= command is equivalent to =\vspace{bigskipamount}= where
+    =bigskipamount= is determined by the document class.
+
+*** \medskip							      :space:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_med
+    :LatexCategory: command
+    :END:
+    
+    The =\medskip= command is equivalent to =\vspace{medskipamount}= where
+    =medskipamount= is determined by the document class.
+    
+*** \smallskip							      :space:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_smallskip
+    :LatexCategory: command
+    :END:
+    
+    The =\smallskip= command is equivalent to =\vspace{smallskipamount}= where
+    =smallskipamount= is determined by the document class.
+
+*** \vfill						      :rubber_length:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_vfill
+    :LatexCategory: command
+    :END:
+    
+    The =\vfill= fill command produces a rubber length which can stretch or
+    shrink vertically.
+
+*** \vspace							      :space:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_vspace
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \vspace[*]{length}
+    #+END_SRC
+
+    The =\vspace= command adds vertical space. The length of the space can be
+    expressed in any terms that LaTeX understands, i.e., points, inches,
+    etc. You can add negative as well as positive space with an =\vspace=
+    command.
+
+    LaTeX removes vertical space that comes at the end of a page. If you don't
+    want LaTeX to remove this space, include the optional =*= argument. Then the
+    space is never removed.
+    
+*** \fbox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_fbox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \fbox{text}
+    #+END_SRC
+
+    The =\fbox= command is exactly the same as the =\mbox= command, except that
+    it puts a frame around the outside of the box that it creates.
+    
+*** \framebox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_framebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \framebox[width][position]{text}
+    #+END_SRC
+
+    The =\framebox= command is exactly the same as the =\makebox= command,
+    except that it puts a frame around the outside of the box that it creates.
+
+    The framebox command produces a rule of thickness =\fboxrule=, and leaves a
+    space =\fboxsep= between the rule and the contents of the box.
+
+*** lrbox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_lrbox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \begin{lrbox}{cmd} text \end{lrbox}
+    #+END_SRC
+
+    This is the environment form of =\sbox=.
+
+    The text inside the environment is saved in the box cmd, which must have
+    been declared with =\newsavebox=.
+
+*** \makebox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_makebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \makebox[width][position]{text}
+    #+END_SRC
+
+    The =\makebox= command creates a box just wide enough to contain the text
+    specified. The width of the box is specified by the optional width
+    argument. The position of the text within the box is determined by the
+    optional position argument.
+
+    - =c= :: centred (default)
+    - =l= :: flushleft
+    - =r= :: flushright
+    - =s= :: stretch from left to right margin. The text must contain
+             stretchable space for this to work.
+
+    See section \makebox.
+
+*** \mbox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_mbox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \mbox{text}
+    #+END_SRC
+
+    The =\mbox= command creates a box just wide enough to hold the text created
+    by its argument.
+
+    Use this command to prevent text from being split across lines.
+   
+*** \newsavebox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_newsavebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \newsavebox{cmd}
+    #+END_SRC
+
+    Declares =cmd=, which must be a command name that is not already defined, to
+    be a bin for saving boxes.
+
+*** \parbox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_parbox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \parbox[position][height][inner-pos]{width}{text}
+    #+END_SRC
+
+    A parbox is a box whose contents are created in paragraph mode. The =\parbox=
+    has two mandatory arguments:
+
+    - width :: specifies the width of the parbox, and
+    - text :: the text that goes inside the parbox.
+	      
+    LaTeX will position a parbox so its center lines up with the center of the
+    text line. The optional position argument allows you to line up either the
+    top or bottom line in the parbox (default is top).
+
+    If the height argument is not given, the box will have the natural height of
+    the text.
+
+    The inner-pos argument controls the placement of the text inside the box. If
+    it is not specified, position is used.
+
+    - =t= :: text is placed at the top of the box.
+    - =c= :: text is centred in the box.
+    - =b= :: text is placed at the bottom of the box.
+    - =s= :: stretch vertically. The text must contain vertically stretchable
+             space for this to work.
+
+    A =\parbox= command is used for a parbox containing a small piece of text,
+    with nothing fancy inside. In particular, you shouldn't use any of the
+    paragraph-making environments inside a =\parbox= argument. For larger pieces
+    of text, including ones containing a paragraph-making environment, you
+    should use a minipage environment See section [[#d1_minipage][minipage]].
+
+*** \raisebox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_raisebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \raisebox{distance}[extend-above][extend-below]{text}
+    #+END_SRC
+
+    The =\raisebox= command is used to raise or lower text. The first mandatory
+    argument specifies how high the text is to be raised (or lowered if it is a
+    negative amount). The text itself is processed in LR mode.
+
+    Sometimes it's useful to make LaTeX think something has a different size
+    than it really does - or a different size than LaTeX would normally think it
+    has. The =\raisebox= command lets you tell LaTeX how tall it is.
+
+    The first optional argument, extend-above, makes LaTeX think that the text
+    extends above the line by the amount specified. The second optional
+    argument, extend-below, makes LaTeX think that the text extends below the
+    line by the amount specified.
+
+*** \rule							       :rule:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_rule
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \rule[raise-height]{width}{thickness}
+    #+END_SRC
+
+    The =\rule= command is used to produce horizontal lines. The arguments are
+    defined as follows:
+
+    - raise-height :: specifies how high to raise the rule (optional)
+    - width :: specifies the length of the rule (mandatory)
+    - thickness :: specifies the thickness of the rule (mandatory)
+
+*** \savebox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_savebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \savebox{cmd}[width][pos]{text}
+    #+END_SRC
+
+    This command typeset text in a box just as for =\makebox=. However, instead
+    of printing the resulting box, it saves it in bin cmd, which must have been
+    declared with =\newsavebox=.
+
+*** \sbox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_sbox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \sbox{text}
+    #+END_SRC
+
+    This commands typeset text in a box just as for =\mbox=. However, instead of
+    printing the resulting box, it saves it in bin =cmd=, which must have been
+    declared with =\newsavebox=.
+
+*** \usebox								:box:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_usebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \usebox{cmd}
+    #+END_SRC
+
+    Prints the box most recently saved in bin cmd by a =\savebox= command.
+
+** Special Characters: Special reserved characters.
+   The following characters play a special role in LaTeX and are called "special
+   printing characters", or simply "special characters".
+
+                       ~# $ % & ~ _ ^ \ { }~
+
+   Whenever you put one of these special characters into your file, you are
+   doing something special. If you simply want the character to be printed just
+   as any other letter, include a ~\~ in front of the character. For example,
+   =\$= will produce ~$~ in your output.
+
+   One exception to this rule is the ~\~ itself because =\\= has its own special
+   meaning. A ~\~ is produced by typing =$\backslash$= in your file.
+  
+   Also, =\~= means "place a tilde accent over the following letter", so you
+   will probably want to use =\verb= instead.
+
+   In addition, you can access any character of a font once you know its number
+   by using the =\symbol= command. For example, the character used for displaying
+   spaces in the =\verb*= command has the code decimal 32, so it can be typed as
+   =\symbol{32}=.
+
+   You can also specify octal numbers with ~'~ or hexadecimal numbers with ~"~,
+   so the previous example could also be written as =\symbol{'40}= or
+   =\symbol{"20}=.
+
+** Splitting the Input: Dealing with big files by splitting.
+   A large document requires a lot of input. Rather than putting the whole input
+   in a single large file, it's more efficient to split it into several smaller
+   ones. Regardless of how many separate files you use, there is one that is the
+   root file; it is the one whose name you type when you run LaTeX.
+
+   - [[#d1_include][\include]] :: Conditionally include a file.
+   - [[#d1_includeonly][\includeonly]] :: Determine which files are included.
+   - [[#d1_input][\input]] :: Unconditionally include a file.
+
+*** \include
+    :PROPERTIES:
+    :CUSTOM_ID: d1_environment-flushright
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \include{file}
+    #+END_SRC
+
+    The =\include= command is used in conjunction with the =\includeonly=
+    command for selective inclusion of files. The file argument is the first
+    name of a file, denoting "file.tex". If file is one the file names in the
+    file list of the =\includeonly= command or if there is no =\includeonly=
+    command, the =\include= command is equivalent to
+    #+BEGIN_SRC latex
+    \clearpage \input{file} \clearpage
+    #+END_SRC
+
+    except that if the file "file.tex" does not exist, then a warning message
+    rather than an error is produced. If the file is not in the file list, the
+    =\include= command is equivalent to =\clearpage=.
+
+    The =\include= command may not appear in the preamble or in a file read by
+    another =\include= command.
+
+*** \includeonly
+    :PROPERTIES:
+    :CUSTOM_ID: d1_includeonly
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \includeonly{file_list}
+    #+END_SRC
+
+    The =\includeonly= command controls which files will be read in by an
+    =\include= command. ~file_list~ should be a comma-separated list of
+    filenames. Each filename must match exactly a filename specified in a
+    =\include= command. This command can only appear in the preamble.
+
+*** \input
+    :PROPERTIES:
+    :CUSTOM_ID: d1_environment-flushleft
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \input{file}
+    #+END_SRC
+
+    The =\input= command causes the indicated file to be read and processed,
+    exactly as if its contents had been inserted in the current file at that
+    point. The file name may be a complete file name with extension or just a
+    first name, in which case the file "file.tex" is used.
+
+** Starting & Ending: The formal start & end layouts.
+   Your input file must contain the following commands as a minimum:
+
+   #+BEGIN_SRC latex
+   \documentclass{class}
+   \begin{document}
+       ... your text goes here ...
+   \end{document}
+   #+END_SRC
+
+   where the class selected is one of the valid classes for LaTeX. See section
+   [[#d1_DocumentClass][Document Classes]] for details of the various document classes available
+   locally.
+
+   You may include other LaTeX commands between the =\documentclass= and
+   the =\begin{document}= commands (i.e., in the "preamble").
+  
+** Table of Contents: How to create a table of contents.
+   A table of contents is produced with the =\tableofcontents= command. You put
+   the command right where you want the table of contents to go; LaTeX does the
+   rest for you. It produces a heading, but it does not automatically start a
+   new page.  If you want a new page after the table of contents, include a
+   =\newpage= command after the =\tableofcontents= command.
+
+   There are similar commands =\listoffigures= and =\listoftables= for producing
+   a list of figures and a list of tables, respectively. Everything works
+   exactly the same as for the table of contents.
+
+   NOTE: If you want any of these items to be generated, you cannot have the
+   =\nofiles= command in your document.
+   
+   - [[#d1_addcontentsline][\addcontentsline]] :: Add an entry to table of contents etc.
+   - [[#d1_addtocontents][\addtocontents]] :: Add text directly to table of contents file etc.
+		       
+*** \addcontentsline
+    :PROPERTIES:
+    :CUSTOM_ID: d1_addcontent
+    :LatexCategory: command
+    :END:
+   
+    #+BEGIN_SRC latex
+    \addcontentsline{file}{sec_unit}{entry}
+    #+END_SRC
+
+    The =\addcontentsline= command adds an entry to the specified list or table
+    where:
+
+    - file is the extension of the file on which information is to be written:
+      toc (table of contents), lof (list of figures), or lot (list of tables).
+    - sec_unit controls the formatting of the entry. It should be one of the
+      following, depending upon the value of the file argument:
+      * =toc= :: the name of the sectional unit, such as part or subsection.
+      * =lof= :: figure
+      * =lot= :: table
+    - entry is the text of the entry.
+
+*** \addtocontents
+    :PROPERTIES:
+    :CUSTOM_ID: d1_addtocontents
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \addtocontents{file}{text}
+    #+END_SRC
+
+    The =\addtocontents= command adds text (or formatting commands) directly to
+    the file that generates the table of contents or list of figures or tables.
+
+    - file is the extension of the file on which information is to be written:
+      toc (table of contents), lof (list of figures), or lot (list of tables).
+    - text is the information to be written.
+
+** Terminal Input/Output: User interaction.
+   
+   - [[#d1_typein][\typein]] :: Read text from the terminal.
+   - [[#d1_typeout][\typeout]] :: Write text to the terminal.
+		 
+*** \typein
+    :PROPERTIES:
+    :CUSTOM_ID: d1_typein
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \typein[cmd]{msg}
+    #+END_SRC
+
+    Prints msg on the terminal and causes LaTeX to stop and wait for you to type
+    a line of input, ending with return. If the cmd argument is missing, the
+    typed input is processed as if it had been included in the input file in
+    place of the =\typein= command. If the cmd argument is present, it must be a
+    command name. This command name is then defined or redefined to be the typed
+    input.
+
+*** \typeout
+    :PROPERTIES:
+    :CUSTOM_ID: d1_typeout
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \typeout{msg}
+    #+END_SRC
+
+    Prints msg on the terminal and in the log file. Commands in msg that are
+    defined with =\newcommand= or =\renewcommand= are replaced by their
+    definitions before being printed.
+
+    LaTeX's usual rules for treating multiple spaces as a single space and
+    ignoring spaces after a command name apply to msg. A =\space= command in msg
+    causes a single space to be printed. A ~^^J~ in msg prints a newline.
+
+** Typefaces: Such as bold, italics etc.
+   The typeface is specified by giving the "size" and "style". A typeface is
+   also called a "font".
+
+   - [[#d1_Styles][Styles]] :: Select roman, italics etc.
+   - [[#d1_Sizes][Sizes]] :: Select point size.
+   - [[#d1_LowLevelFontCmd][Low-level font commands]] :: Commands for wizards.
+
+*** \Styles							       :font:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_Styles
+    :END:
+    
+    The following type style commands are supported by LaTeX.
+
+    These commands are used like =\textit{italics text}=. The corresponding
+    command in parenthesis is the "declaration form", which takes no
+    arguments. The scope of the declaration form lasts until the next type style
+    command or the end of the current group.
+
+    The declaration forms are cumulative; i.e., you can say =\sffamily\bfseries=
+    to get sans serif boldface.
+
+    You can also use the environment form of the declaration forms;
+    e.g. =\begin{ttfamily}...\end{ttfamily}=.
+
+**** \textrm (\rmfamily)
+     Roman.
+     
+**** \textit (\itshape) \emph
+     Emphasis (toggles between \textit and \textrm).
+    
+**** \textmd (\mdseries)
+     Medium weight (default). The opposite of boldface.
+     
+**** \textbf (\bfseries)
+     Boldface.
+     
+**** \textup (\upshape)
+     Upright (default). The opposite of slanted.
+     
+**** \textsl (\slshape)
+     Slanted.
+     
+**** \textsf (\sffamily)
+     Sans serif.
+     
+**** \textsc (\scshape)
+     Small caps.
+     
+**** \texttt (\ttfamily)
+     Typewriter.
+     
+**** \textnormal (\normalfont)
+     Main document font.
+     
+**** \mathrm
+     Roman, for use in math mode.
+     
+**** \mathbf
+     Boldface, for use in math mode.
+     
+**** \mathsf
+     Sans serif, for use in math mode.
+     
+**** \mathtt
+     Typewriter, for use in math mode.
+     
+**** \mathit
+    Italics, for use in math mode, e.g. variable names with several letters.
+    
+**** \mathnormal
+     For use in math mode, e.g. inside another type style declaration.
+     
+**** \mathcal
+     "Calligraphic" letters, for use in math mode.
+
+**** \mathversion
+     In addition, the command =\mathversion{bold}= can be used for switching to
+     bold letters and symbols in formulas. =\mathversion{normal}= restores the
+     default.
+
+*** Sizes							       :font:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_Sizes
+    :END:
+    
+    The following standard type size commands are supported by LaTeX.
+
+    The commands as listed here are "declaration forms". The scope of the
+    declaration form lasts until the next type style command or the end of the
+    current group.
+
+    You can also use the environment form of these commands;
+    e.g. =\begin{tiny}...\end{tiny}=.
+    
+    - =\tiny=
+    - =\scriptsize=
+    - =\footnotesize=
+    - =\small=
+    - =\normalsize= (default)
+    - =\large=
+    - =\Large=
+    - =\LARGE=
+    - =\huge=
+    - =\Huge=
+
+*** Low-level font commands					       :font:
+    :PROPERTIES:
+    :CUSTOM_ID: d1_LowLevelFontCmd
+    :END:
+    
+    These commands are primarily intended for writers of macros and
+    packages. The commands listed here are only a subset of the available
+    ones. For full details, you should consult Chapter 7 of The LaTeX Companion.
+    
+**** \fontencoding{enc}
+     Select font encoding. Valid encodings include OT1 and T1.
+ 
+**** \fontfamily{family}
+     Select font family. Valid families include:
+     - =cmr= :: for Computer Modern Roman
+     - =cmss= :: for Computer Modern Sans Serif
+     - =cmtt= :: for Computer Modern Typewriter
+     and numerous others.
+
+**** \fontseries{series}
+     Select font series. Valid series include:
+     - =m= :: Medium (normal)
+     - =b= :: Bold
+     - =c= :: Condensed
+     - =bc= :: Bold condensed
+     - =bx= :: Bold extended
+    and various other combinations.
+
+**** \fontshape{shape}
+     Select font shape. Valid shapes are:
+     - =n= :: Upright (normal)
+     - =it= :: Italic
+     - =sl= :: Slanted (oblique)
+     - =sc= :: Small caps
+     - =ui= :: Upright italics
+     - =ol= :: Outline
+     The two last shapes are not available for most font families.
+
+**** \fontsize{size}{skip}
+     Set font size. The first parameter is the font size to switch to; the
+     second is the =\baselineskip= to use. The unit of both parameters defaults
+     to pt. A rule of thumb is that the baselineskip should be 1.2 times the
+     font size.
+
+**** \selectfont
+     The changes made by calling the four font commands described above do not
+     come into effect until =\selectfont= is called.
+
+**** \usefont{enc}{family}{series}{shape}
+     Equivalent to calling =\fontencoding=, =\fontfamily=, =\fontseries= and
+     =\fontshape= with the given parameters, followed by =\selectfont=.
+
+* Document Classes: Some of the various classes available.
+  :PROPERTIES:
+  :CUSTOM_ID: d1_DocumentClass
+  :END:
+  
+  Valid LaTeX document classes include:
+  - article
+  - report
+  - [[#d1_class-letter][letter]]
+  - book
+  - slides
+
+  Other document classes are often available. They are selected with the
+  following command:
+  
+  #+BEGIN_SRC latex
+  \documentclass [options] {class}
+  #+END_SRC
+
+  All the standard classes (except slides) accept the following options for
+  selecting the typeface size (10 pt is default): 10pt, 11pt, 12pt
+
+  All classes accept these options for selecting the paper size (default is
+  letter): a4paper, a5paper, b5paper, letterpaper, legalpaper, executivepaper
+
+  Miscellaneous options:
+  - landscape :: selects landscape format. Default is portrait.
+  - titlepage, notitlepage :: selects if there should be a separate title page.
+  - leqno :: equation number on left side of equations. Default is right side.
+  - fleqn :: displayed formulas flush left. Default is centred.
+  - openbib :: use "open" bibliography format.
+  - draft, final :: mark/do not mark overfull boxes with a rule. Default is final.
+
+  These options are not available with the slides class:
+
+  - oneside, twoside :: selects one- or twosided layout. Default is oneside,
+       except for the book class.
+  - openright, openany :: determines if a chapter should start on a right-hand
+       page. Default is openright for book.
+  - onecolumn, twocolumn :: one or two columns. Defaults to one column.
+
+  The slides class offers the option clock for printing the time at the bottom
+  of each note.
+
+  If you specify more than one option, they must be separated by a comma.
+
+  Additional packages are loaded by a
+
+  #+BEGIN_SRC latex
+  \usepackage[options]{pkg}
+  #+END_SRC
+
+  command. If you specify more than one package, they must be separated by a
+  comma.
+
+  Any options given in the =\documentclass= command that are unknown by the
+  selected document class are passed on to the packages loaded with
+  =\usepackage=.
+
+** Letters: The letter class.
+    :PROPERTIES:
+    :CUSTOM_ID: d1_class-letter
+    :END:
+   
+   You can use LaTeX to typeset letters, both personal and business. The letter
+   document class is designed to make a number of letters at once, although you
+   can make just one if you so desire.
+   
+   Your `.tex' source file has the same minimum commands as the other document
+   classes, i.e., you must have the following commands as a minimum:
+
+   #+BEGIN_SRC latex
+   \documentclass{letter}
+   \begin{document}
+   ... letters ...
+   \end{document}
+   #+END_SRC
+
+   Each letter is a letter environment, whose argument is the name and address
+   of the recipient. For example, you might have:
+   
+   #+BEGIN_SRC latex
+   \begin{letter}{Mr. Joe Smith\\ 2345 Princess St.
+   	\\ Edinburgh, EH1 1AA}
+   ...
+   \end{letter}
+   #+END_SRC
+   
+   The letter itself begins with the =\opening= command. The text of the letter
+   follows. It is typed as ordinary LaTeX input. Commands that make no sense in
+   a letter, like =\chapter=, do not work. The letter closes with a =\closing=
+   command.
+   
+   After the closing, you can have additional material. The =\cc= command
+   produces the usual "cc: ...". There's also a similar =\encl= command for a
+   list of enclosures. With both these commands, use =\\= to separate the items.
+   
+   These commands are used with the letter class:
+
+   - [[#d1_letter-address][\address]] :: Your return address.
+   - [[#d1_letter-cc][\cc]] :: Cc list.
+   - [[#d1_letter-closing][\closing]] :: Saying goodbye.
+   - [[#d1_letter-encl][\encl]] :: List of enclosed material.
+   - [[#d1_letter-location][\location]] :: Your organization's address.
+   - [[#d1_letter-makelabels][\makelabels]] :: Making address labels.
+   - [[#d1_letter-name][\name]] :: Your name, for the return address.
+   - [[#d1_letter-opening][\opening]] :: Saying hello.
+   - [[#d1_letter-ps][\ps]] :: Adding a postscript.
+   - [[#d1_letter-signature][\signature]] :: Your signature.
+   - [[#d1_letter-startbreaks][\startbreaks]] :: Allow page breaks.
+   - [[#d1_letter-stopbreaks][\stopbreaks]] :: Disallow page breaks.
+   - [[#d1_letter-telephone][\telephone]] :: Your phone number.
+
+*** \address
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-address
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \address{Return address}
+    #+END_SRC
+    
+    The return address, as it should appear on the letter and the
+    envelope. Separate lines of the address should be separated by =\\=
+    commands. If you do not make an =\address= declaration, then the letter will
+    be formatted for copying onto your organization's standard letterhead. If
+    you give an =\address= declaration, then the letter will be formatted as a
+    personal letter.
+  
+*** \cc
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-cc
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \cc{Kate Schechter\\Rob McKenna}
+    #+END_SRC
+
+    Generate a list of other persons the letter was sent to. Each name is
+    printed on a separate line.
+    
+*** \closing
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-closing
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \closing{text}
+    #+END_SRC
+
+    The letter closes with a \closing command, i.e., =\closing{Best Regards,}=
+
+*** \encl
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-encl
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \encl{CV\\Certificates}
+    #+END_SRC
+
+    Generate a list of enclosed material.
+    
+*** \location
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-location
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \location{address}
+    #+END_SRC
+
+    This modifies your organization's standard address. This only appears if the
+    firstpage pagestyle is selected.
+
+*** \makelabels
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-makelabels
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \makelabels{number}
+    #+END_SRC
+
+    If you issue this command in the preamble, LaTeX will create a sheet of
+    address labels. This sheet will be output before the letters.
+    
+*** \name
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-name
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \name{June Davenport}
+    #+END_SRC
+
+    Your name, used for printing on the envelope together with the return
+    address.
+
+*** \opening
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-opening
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \opening{text}
+    #+END_SRC
+
+    The letter begins with the =\opening= command. The mandatory argument, text,
+    is whatever text you wish to start your letter, i.e., =\opening{Dear Joe,}=
+
+*** \ps
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-ps
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \ps
+    #+END_SRC
+
+    Use this command before a postscript.
+
+*** \signature
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-signature
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \signature{Harvey Swick}
+    #+END_SRC
+
+    Your name, as it should appear at the end of the letter underneath the space
+    for your signature. Items that should go on separate lines should be
+    separated by =\\= commands.
+
+*** \startbreaks
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-startbreaks
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \startbreaks
+    #+END_SRC
+
+    Used after a =\stopbreaks= command to allow page breaks again.
+
+*** \stopbreaks
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-stopbreaks
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \stopbreaks
+    #+END_SRC
+
+    Inhibit page breaks until a =\startbreaks= command occurs.
+
+*** \telephone
+    :PROPERTIES:
+    :CUSTOM_ID: d1_letter-telephone
+    :LatexCategory: command
+    :END:
+
+    #+BEGIN_SRC latex
+    \telephone{number}
+    #+END_SRC
+
+    This is your telephone number. This only appears if the firstpage pagestyle
+    is selected.
+
+* Environments
+  LaTeX provides a number of different paragraph-making environments. Each
+  environment begins and ends in the same manner.
+
+  #+BEGIN_SRC latex
+        \begin{environment-name}
+        ...
+        \end{environment-name}
+  #+END_SRC
+
+  - [[#d1_environment-array][array]] :: Math arrays.
+  - [[#d1_environment-center][center]] :: Centred lines.
+  - [[#d1_environment-description][description]] :: Labelled lists.
+  - [[#d1_environment-enumerate][enumerate]] :: Numbered lists.
+  - [[#d1_environment-eqnarray][eqnarray]] :: Sequences of aligned equations.
+  - [[#d1_environment-equation][equation]] :: Displayed equation.
+  - [[#d1_environment-figure][figure]] :: Floating figures.
+  - [[#d1_environment-flushleft][flushleft]] :: Flushed left lines.
+  - [[#d1_environment-flushright][flushright]] :: Flushed right lines.
+  - [[#d1_itemize][itemize]] :: Bulleted lists.
+  - [[#d1_env-letter][letter]] :: Letters.
+  - [[#d1_env-list][list]] :: Generic list environment.
+  - [[#d1_minipage][minipage]] :: Miniature page.
+  - [[#d1_env-picture][picture]] :: Picture with text, arrows, lines and circles.
+  - [[#d1_env-quotation][quotation]] :: Indented environment with paragraph indentation.
+  - [[#d1_env-quote][quote]] :: Indented environment with no paragraph indentation.
+  - [[#d1_env-tabbing][tabbing]] :: Align text arbitrarily.
+  - [[#d1_env-table][table]] :: Floating tables.
+  - [[#d1_env-tabular][tabular]] :: Align text in columns.
+  - [[#d1_thebibliography][thebibliography]] :: Bibliography or reference list.
+  - [[#d1_env-theorem][theorem]] :: Theorems, lemmas, etc.
+  - [[#d1_titlepage][titlepage]] :: For hand crafted title pages.
+  - [[#d1_env-verbatim][verbatim]] :: Simulating typed input.
+  - [[#d1_env-verse][verse]] :: For poetry and other things.
+
+** array
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-array
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{array}{col1col2...coln}
+     column 1 entry & column 2 entry ... & column n entry \\
+     ...
+   \end{array}
+   #+END_SRC
+
+   Math arrays are produced with the array environment. It has a single
+   mandatory argument describing the number of columns and the alignment within
+   them. Each column, coln, is specified by a single letter that tells how items
+   in that row should be formatted.
+
+   - =c= :: for centred
+   - =l= :: for flush left
+   - =r= :: for flush right
+
+   Column entries must be separated by an &. Column entries may include other
+   LaTeX commands. Each row of the array must be terminated with the string
+   =\\=.
+
+   Note that the array environment can only be used in math mode, so normally it
+   is used inside an equation environment.
+ 
+** center
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-center
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{center}
+     Text on line 1 \\
+     Text on line 2 \\
+     ...
+   \end{center}
+   #+END_SRC
+
+   The center environment allows you to create a paragraph consisting of lines
+   that are centred within the left and right margins on the current page. Each
+   line must be terminated with the string =\\=.
+
+  - =\centering=: The declaration form of the center environment.
+  
+  #+BEGIN_SRC latex
+  \centering
+  #+END_SRC
+
+  This declaration corresponds to the center environment. This declaration can
+  be used inside an environment such as quote or in a parbox. The text of a
+  figure or table can be centred on the page by putting a =\centering= command
+  at the beginning of the figure or table environment.
+
+  Unlike the center environment, the =\centering= command does not start a new
+  paragraph; it simply changes how LaTeX formats paragraph units. To affect a
+  paragraph unit's format, the scope of the declaration must contain the blank
+  line or \end command (of an environment like quote) that ends the paragraph
+  unit.
+
+** description							       :list:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-description
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{description}
+     \item [label] First item
+     \item [label] Second item
+     ...
+   \end{description}
+   #+END_SRC
+
+   The description environment is used to make labelled lists. The label is bold
+   face and flushed right.
+   
+** enumerate							       :list:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-enumerate
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{enumerate}
+     \item First item
+     \item Second item
+     ...
+   \end{enumerate}
+   #+END_SRC
+   
+   The enumerate environment produces a numbered list. Enumerations can be
+   nested within one another, up to four levels deep. They can also be nested
+   within other paragraph-making environments.
+
+   Each item of an enumerated list begins with an =\item= command. There must be
+   at least one =\item= command within the environment.
+
+   The enumerate environment uses the enumi through enumiv counters (see section
+   Counters). The type of numbering can be changed by redefining =\theenumi= etc.
+
+** eqnarray							       :math:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-eqnarray
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{eqnarray}
+     math formula 1 \\
+     math formula 2 \\
+     ...
+   \end{eqnarray}
+   #+END_SRC
+   
+   The eqnarray environment is used to display a sequence of equations or
+   inequalities. It is very much like a three-column array environment, with
+   consecutive rows separated by =\\= and consecutive items within a row
+   separated by an =&=.
+
+   An equation number is placed on every line unless that line has a =\nonumber=
+   command.
+
+   The command =\lefteqn= is used for splitting long formulas across lines. It
+   typesets its argument in display style flush left in a box of zero width.
+   
+** equation							       :math:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-equation
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{equation}
+     math formula
+   \end{equation}
+   #+END_SRC
+
+   The equation environment centres your equation on the page and places the
+   equation number in the right margin.
+
+** figure							   :graphics:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-figure
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{figure}[placement]
+     body of the figure
+     \caption{figure title}
+     \label{fig:figure-label}
+   \end{figure}
+   #+END_SRC
+
+   Figures are objects that are not part of the normal text, and are usually
+   "floated" to a convenient place, like the top of a page. Figures will not be
+   split between two pages.
+
+   The optional argument =[placement]= determines where LaTeX will try to place
+   your figure. There are four places where LaTeX can possibly put a float:
+
+   1. =h= (Here) - at the position in the text where the figure environment
+      appears.
+   2. =t= (Top) - at the top of a text page.
+   3. =b= (Bottom) - at the bottom of a text page.
+   4. =p= (Page of floats) - on a separate float page, which is a page containing
+      no text, only floats.
+
+   The standard report and article classes use the default placement =tbp=.
+
+   The body of the figure is made up of whatever text, LaTeX commands, etc. you
+   wish. The =\caption= command allows you to title your figure.
+  
+** flushleft
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-flushleft
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{flushleft}
+     Text on line 1 \\
+     Text on line 2 \\
+     ...
+   \end{flushleft}
+   #+END_SRC
+
+   The flushleft environment allows you to create a paragraph consisting of
+   lines that are flushed left, to the left-hand margin. Each line must be
+   terminated with the string =\\=.
+   
+   - =\raggedright=: The declaration form of the flushleft environment.
+  
+   =\raggedright=
+
+   This declaration corresponds to the flushleft environment. This declaration
+   can be used inside an environment such as quote or in a parbox.
+
+   Unlike the flushleft environment, the =\raggedright= command does not start a
+   new paragraph; it simply changes how LaTeX formats paragraph units. To affect
+   a paragraph unit's format, the scope of the declaration must contain the
+   blank line or \end command (of an environment like quote) that ends the
+   paragraph unit.
+   
+** flushright
+   :PROPERTIES:
+   :CUSTOM_ID: d1_environment-flushright
+   :LatexCategory: environment
+   :END:
+
+   #+BEGIN_SRC latex
+   \begin{flushright}
+     Text on line 1 \\
+     Text on line 2 \\
+     ...
+   \end{flushright}
+   #+END_SRC
+   
+   The flushright environment allows you to create a paragraph consisting of
+   lines that are flushed right, to the right-hand margin. Each line must be
+   terminated with the string =\\=.
+
+   - =\raggedleft=: The declaration form of the flushright environment.
+  
+   =\raggedleft=
+
+   This declaration corresponds to the flushright environment. This declaration
+   can be used inside an environment such as quote or in a parbox.
+
+   Unlike the flushright environment, the =\raggedleft= command does not start a
+   new paragraph; it simply changes how LaTeX formats paragraph units. To affect
+   a paragraph unit's format, the scope of the declaration must contain the
+   blank line or =\end= command (of an environment like quote) that ends the
+   paragraph unit.
+
+** itemize							       :list:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_itemize
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{itemize}
+     \item First item
+     \item Second item
+      ...
+   \end{itemize}
+   #+END_SRC
+
+   The itemize environment produces a "bulleted" list. Itemizations can be
+   nested within one another, up to four levels deep. They can also be nested
+   within other paragraph-making environments.
+
+   Each item of an itemized list begins with an =\item= command. There must be
+   at least one =\item= command within the environment.
+
+   The itemize environment uses the itemi through itemiv counters (see section
+   Counters). The type of numbering can be changed by redefining =\theitemi=
+   etc.
+  
+** letter
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-letter
+   :END:
+   
+   This environment is used for creating letters. See section Letters.
+
+** list								       :list:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-list
+   :LatexCategory: environment
+   :END:
+   
+   The list environment is a generic environment which is used for defining many
+   of the more specific environments. It is seldom used in documents, but often
+   in macros.
+
+   #+BEGIN_SRC latex
+   \begin{list}{label}{spacing}
+     \item First item
+     \item Second item
+     ...
+   \end{list}
+   #+END_SRC
+ 
+   The ~{label}~ argument specifies how items should be labelled. This argument
+   is a piece of text that is inserted in a box to form the label. This argument
+   can and usually does contain other LaTeX commands.
+
+   The ~{spacing}~ argument contains commands to change the spacing parameters
+   for the list. This argument will most often be null, i.e., ~{}~. This will
+   select all default spacing which should suffice for most cases.
+  
+** minipage
+   :PROPERTIES:
+   :CUSTOM_ID: d1_minipage
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{minipage}[position]{width}
+     text
+   \end{minipage}
+   #+END_SRC
+
+   The minipage environment is similar to a =\parbox= command. It takes the same
+   optional position argument and mandatory width argument. You may use other
+   paragraph-making environments inside a minipage.
+
+   Footnotes in a minipage environment are handled in a way that is particularly
+   useful for putting footnotes in figures or tables. A =\footnote= or
+   =\footnotetext= command puts the footnote at the bottom of the minipage
+   instead of at the bottom of the page, and it uses the mpfootnote counter
+   instead of the ordinary footnote counter See section Counters.
+
+   NOTE: Don't put one minipage inside another if you are using footnotes; they
+   may wind up at the bottom of the wrong minipage.
+
+** picture							   :graphics:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-picture
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{picture}(width,height)(x offset,y offset)
+     ...
+     picture commands
+     ...
+   \end{picture}
+   #+END_SRC
+
+   The picture environment allows you to create just about any kind of picture
+   you want containing text, lines, arrows and circles. You tell LaTeX where to
+   put things in the picture by specifying their coordinates. A coordinate is a
+   number that may have a decimal point and a minus sign -- a number like 5, 2.3
+   or -3.1416. A coordinate specifies a length in multiples of the unit length
+   =\unitlength=, so if =\unitlength= has been set to 1cm, then the coordinate
+   2.54 specifies a length of 2.54 centimetres. You can change the value of
+   =\unitlength= anywhere you want, using the =\setlength= command, but strange
+   things will happen if you try changing it inside the picture environment.
+
+   A position is a pair of coordinates, such as (2.4,-5), specifying the point
+   with x-coordinate 2.4 and y-coordinate -5.  Coordinates are specified in the
+   usual way with respect to an origin, which is normally at the lower-left
+   corner of the picture. Note that when a position appears as an argument, it
+   is not enclosed in braces; the parentheses serve to delimit the argument.
+
+   The picture environment has one mandatory argument, which is a position. It
+   specifies the size of the picture. The environment produces a rectangular box
+   with width and height determined by this argument's x- and y-coordinates.
+
+   The picture environment also has an optional position argument, following the
+   size argument, that can change the origin. (Unlike ordinary optional
+   arguments, this argument is not contained in square brackets.) The optional
+   argument gives the coordinates of the point at the lower-left corner of the
+   picture (thereby determining the origin). For example, if =\unitlength= has
+   been set to 1mm, the command
+
+   =\begin{picture}(100,200)(10,20)=
+
+   produces a picture of width 100 millimeters and height 200 millimeters, whose
+   lower-left corner is the point (10,20) and whose upper-right corner is
+   therefore the point (110,220). When you first draw a picture, you will omit
+   the optional argument, leaving the origin at the lower-left corner. If you
+   then want to modify your picture by shifting everything, you just add the
+   appropriate optional argument.
+
+   The environment's mandatory argument determines the nominal size of the
+   picture. This need bear no relation to how large the picture really is; LaTeX
+   will happily allow you to put things outside the picture, or even off the
+   page. The picture's nominal size is used by LaTeX in determining how much
+   room to leave for it.
+
+   Everything that appears in a picture is drawn by the =\put= command. The
+   command
+
+   =\put (11.3,-.3){...}=
+
+   puts the object specified by ... in the picture, with its reference point at
+   coordinates (11.3,-.3). The reference points for various objects will be
+   described below.
+
+   The =\put= command creates an LR box. You can put anything in the text
+   argument of the =\put= command that you'd put into the argument of an =\mbox=
+   and related commands. When you do this, the reference point will be the lower
+   left corner of the box.
+
+   Picture commands:
+   - [[#d1_picture-circle][\circle]] :: Draw a circle.
+   - [[#d1_picture-dashbox][\dashbox]] :: Draw a dashed box.
+   - [[#d1_picture-frame][\frame]] :: Draw a frame around an object.
+   - [[#d1_picture-framebox][\framebox (picture)]] :: Draw a box with a frame around it.
+   - [[#d1_picture-line][\line]] :: Draw a straight line.
+   - [[#d1_picture-linethickness][\linethickness]] :: Set the line thickness.
+   - [[#d1_picture-makebox][\makebox (picture)]] :: Draw a box of the specified size.
+   - [[#d1_picture-multiput][\multiput]] :: Draw multiple instances of an object.
+   - [[#d1_picture-oval][\oval]] :: Draw an ellipse.
+   - [[#d1_picture-put][\put]] :: Place an object at a specified place.
+   - [[#d1_picture-shortstack][\shortstack]] :: Make a pile of objects.
+   - [[#d1_picture-vector][\vector]] :: Draw a line with an arrow.
+
+*** \circle
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-circle
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \circle[*]{diameter}
+    #+END_SRC
+
+    The =\circle= command produces a circle with a diameter as close to the
+    specified one as possible. If the *-form of the command is used, LaTeX draws
+    a solid circle.
+
+    Note that only circles up to 40 pt can be drawn.
+
+*** \dashbox
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-dashbox
+    :LatexCategory: command
+    :END:
+    
+    Draws a box with a dashed line.
+    #+BEGIN_SRC latex
+    \dashbox{dash_length}(width,height){...}
+    #+END_SRC
+
+    The =\dashbox= has an extra argument which specifies the width of each
+    dash. A dashed box looks best when the width and height are multiples of the
+    ~dash_length~.
+
+*** \frame
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-frame
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \frame{...}
+    #+END_SRC
+
+    The =\frame= command puts a rectangular frame around the object specified in
+    the argument. The reference point is the bottom left corner of the frame. No
+    extra space is put between the frame and the object.
+
+*** \framebox
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-frame
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \framebox(width,height)[position]{...}
+    #+END_SRC
+
+    The =\framebox= command is exactly the same as the =\makebox= command,
+    except that it puts a frame around the outside of the box that it creates.
+
+    The framebox command produces a rule of thickness =\fboxrule=, and leaves a
+    space =\fboxsep= between the rule and the contents of the box.
+
+*** \line
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-line
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \line(x slope,y slope){length}
+    #+END_SRC
+
+    The =\line= command draws a line of the specified length and slope.
+
+    Note that LaTeX can only draw lines with slope = x/y, where x and y have
+    integer values from -6 through 6.
+
+*** \linethickness
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-linethickness
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \linethickness{dimension}
+    #+END_SRC
+
+    Declares the thickness of horizontal and vertical lines in a picture
+    environment to be dimension, which must be a positive length. It does not
+    affect the thickness of slanted lines and circles, or the quarter circles
+    drawn by =\oval= to form the corners of an oval.
+
+*** \makebox
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-makebox
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \makebox(width,height)[position]{...}
+    #+END_SRC
+
+    The =\makebox= command for the picture environment is similar to the normal
+    =\makebox= command except that you must specify a width and height in
+    multiples of =\unitlength=.
+
+    The optional argument, ~[position]~, specifies the quadrant that your text
+    appears in. You may select up to two of the following:
+    
+    - =t= :: Moves the item to the top of the rectangle
+    - =b= :: Moves the item to the bottom
+    - =l= :: Moves the item to the left
+    - =r= :: Moves the item to the right
+
+*** \multiput
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-multiput
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \multiput(x coord,y coord)(delta x,delta y){number of copies}{object}
+    #+END_SRC
+
+    The =\multiput= command can be used when you are putting the same object in
+    a regular pattern across a picture.
+
+*** \oval
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-oval
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \oval(width,height)[portion]
+    #+END_SRC
+
+    The =\oval= command produces a rectangle with rounded corners. The optional
+    argument, ~[portion]~, allows you to select part of the oval.
+
+    - =t= :: Selects the top portion
+    - =b= :: Selects the bottom portion
+    - =r= :: Selects the right portion
+    - =l= :: Selects the left portion
+
+    Note that the "corners" of the oval are made with quarter circles with a
+    maximum radius of 20 pt, so large "ovals" will look more like boxes with rounded
+    corners.
+
+*** \put
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-put
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \put(x coord,y coord){ ... }
+    #+END_SRC
+
+    The =\put= command places the item specified by the mandatory argument at
+    the given coordinates.
+
+*** \shortstack
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-shortstack
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \shortstack[position]{... \\ ... \\ ...}
+    #+END_SRC
+
+    The =\shortstack= command produces a stack of objects. The valid positions
+    are:
+
+    - =r= :: Moves the objects to the right of the stack
+    - =l= :: Moves the objects to the left of the stack
+    - =c= :: Moves the objects to the center of the stack (default)
+
+*** \vector
+    :PROPERTIES:
+    :CUSTOM_ID: d1_picture-vector
+    :LatexCategory: command    
+    :END:
+    
+    #+BEGIN_SRC latex
+    \vector(x slope,y slope){length}
+    #+END_SRC
+
+    The =\vector= command draws a line with an arrow of the specified length and
+    slope. The x and y values must lie between -4 and +4, inclusive.
+
+** quotation
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-quotation
+   :LatexCategory: environment
+   :END:
+    
+    #+BEGIN_SRC latex
+    \begin{quotation}
+      text
+    \end{quotation}
+    #+END_SRC
+
+    The margins of the quotation environment are indented on the left and the
+    right. The text is justified at both margins and there is paragraph
+    indentation. Leaving a blank line between text produces a new paragraph.
+
+** quote
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-quote
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{quote}
+     text
+   \end{quote}
+   #+END_SRC
+  
+   The margins of the quote environment are indented on the left and the
+   right. The text is justified at both margins.  Leaving a blank line between
+   text produces a new paragraph.
+
+** tabbing							      :align:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-tabbing
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{tabbing}
+     text \= more text \= still more text \= last text \\
+     second row \>  \> more \\
+     ...
+   \end{tabbing}
+   #+END_SRC
+  
+   The tabbing environment provides a way to align text in columns. It works by
+   setting tab stops and tabbing to them much the way you do with an ordinary
+   typewriter.
+
+   It is best suited for cases where the width of each column is constant and
+   known in advance.
+
+   This environment can be broken across pages, unlike the tabular environment.
+
+   The following commands can be used inside a tabbing environment:
+
+   - ~\=~ :: Sets a tab stop at the current position.
+   - =\>= :: Advances to the next tab stop.
+   - =\<= :: This command allows you to put something to the left of the local
+             margin without changing the margin. Can only be used at the start
+             of the line.
+   - =\+= :: Moves the left margin of the next and all the following commands
+             one tab stop to the right.
+   - =\-= :: Moves the left margin of the next and all the following commands one tab stop to the left.
+   - =\'= :: Moves everything that you have typed so far in the current column,
+             i.e. everything from the most recent =\>=, =\<=, =\'=, =\\=, or
+             =\kill= command, to the right of the previous column, flush against
+             the current column's tab stop.
+   - =\`= :: Allows you to put text flush right against any tab stop, including
+             tab stop 0. However, it can't move text to the right of the last
+             column because there's no tab stop there. The =\`= command moves
+             all the text that follows it, up to the =\\= or =\end{tabbing}=
+             command that ends the line, to the right margin of the tabbing
+             environment. There must be no =\>= or =\'= command between the =\`=
+             and the command that ends the line.
+   - ~\kill~ :: Sets tab stops without producing text. Works just like =\\=
+                except that it throws away the current line instead of producing
+                output for it. The effect of any ~\=~, =\+= or =\-= commands in
+                that line remain in effect.
+   - ~\pushtabs~ :: Saves all current tab stop positions. Useful for temporarily
+                    changing tab stop positions in the middle of a tabbing
+                    environment.
+   - ~\pushtabs~ :: Restores the tab stop positions saved by the last
+                    =\pushtabs=.
+   - ~\a~ :: In a tabbing environment, the commands ~\=~, =\'= and =\`= do not
+             produce accents as normal. Instead, the commands ~\a=~, =\a'= and
+             =\a`= are used.
+
+   This example typesets a Pascal function in a traditional format:
+   #+BEGIN_SRC latex
+   \begin{tabbing}
+     function \= fact(n : integer) : integer;\\
+            \> begin \= \+ \\
+                  \> if \= n $>$ 1 then \+ \\
+                           fact := n * fact(n-1) \- \\
+                     else \+ \\
+                           fact := 1; \-\- \\
+               end;\\
+   \end{tabbing}
+   #+END_SRC
+
+** table							      :table:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-table
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{table}[placement]
+     body of the table
+     \caption{table title}
+     \label{tab:table-label}
+   \end{table}
+   #+END_SRC
+  
+   Tables are objects that are not part of the normal text, and are usually
+   "floated" to a convenient place, like the top of a page. Tables will not be
+   split between two pages.
+
+   The optional argument =[placement]= determines where LaTeX will try to place
+   your table. There are four places where LaTeX can possibly put a float:
+
+   - =h= :: Here - at the position in the text where the table environment
+            appears.
+   - =t= :: Top - at the top of a text page.
+   - =b= :: Bottom - at the bottom of a text page.
+   - =p= :: Page of floats - on a separate float page, which is a page
+            containing no text, only floats.
+
+   The standard report and article classes use the default placement =[tbp]=.
+
+   The body of the table is made up of whatever text, LaTeX commands, etc., you
+   wish. The =\caption= command allows you to title your table.
+
+** tabular							      :table:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-tabular
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{tabular}[pos]{cols}
+     column 1 entry & column 2 entry ... & column n entry \\
+     ...
+   \end{tabular}
+   #+END_SRC
+   or
+   #+BEGIN_SRC latex
+   \begin{tabular*}{width}[pos]{cols}
+     column 1 entry & column 2 entry ... & column n entry \\
+     ...
+   \end{tabular*}
+   #+END_SRC
+  
+   These environments produce a box consisting of a sequence of rows of items,
+   aligned vertically in columns. The mandatory and optional arguments consist
+   of:
+
+   - =width= :: Specifies the width of the tabular* environment. There must be
+                rubber space between columns that can stretch to fill out the
+                specified width.
+   - =pos= :: Specifies the vertical position; default is alignment on the
+              center of the environment.
+      * =t= :: align on top row
+      * =b= :: align on bottom row
+   - =cols= :: Specifies the column formatting. It consists of a sequence of the
+               following specifiers, corresponding to the sequence of columns
+               and intercolumn material.
+      * =l= :: A column of left-aligned items.
+      * =r= :: A column of right-aligned items.
+      * =c= :: A column of centred items.
+      * =|= :: A vertical line the full height and depth of the environment.
+      * =@{text}= :: This inserts text in every row. An @-expression suppresses
+                     the intercolumn space normally inserted between columns;
+                     any desired space between the inserted text and the
+                     adjacent items must be included in text.  An
+                     =\extracolsep{wd}= command in an @-expression causes an
+                     extra space of width wd to appear to the left of all
+                     subsequent columns, until countermanded by another
+                     =\extracolsep= command. Unlike ordinary intercolumn space,
+                     this extra space is not suppressed by an @-expression. An
+                     =\extracolsep= command can be used only in an @-expression
+                     in the cols argument.
+      * =p{wd}= :: Produces a column with each item typeset in a parbox of width
+                   wd, as if it were the argument of a =\parbox[t]{wd}=
+                   command. However, a =\\= may not appear in the item, except
+                   in the following situations:
+         1. inside an environment like minipage, array, or tabular.
+         2. inside an explicit =\parbox=.
+         3. in the scope of a =\centering=, =\raggedright=, or =\raggedleft=
+            declaration. The latter declarations must appear inside braces or an
+            environment when used in a p-column element.
+      * =*{num}{cols}= :: Equivalent to num copies of cols, where num is any
+                          positive integer and cols is any list of
+                          column-specifiers, which may contain
+                          another *-expression.
+
+   These commands can be used inside a tabular environment:
+
+   - [[#d1_cline][\cline]] :: Draw a horizontal line spanning some columns.
+   - [[#d1_hline][\hline]] :: Draw a horizontal line spanning all columns.
+   - [[#d1_multicolumn][\multicolumn]] :: Make an item spanning several columns.
+   - [[#d1_vline][\vline]] :: Draw a vertical line.
+
+*** \cline
+    :PROPERTIES:
+    :CUSTOM_ID: d1_cline
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \cline{i-j}
+    #+END_SRC
+
+    The =\cline= command draws horizontal lines across the columns specified,
+    beginning in column i and ending in column j, which are identified in the
+    mandatory argument.
+
+*** \hline
+    :PROPERTIES:
+    :CUSTOM_ID: d1_hline
+    :LatexCategory: command
+    :END:
+    
+    The =\hline= command will draw a horizontal line the width of the
+    table. It's most commonly used to draw a line at the top, bottom, and
+    between the rows of the table.
+
+*** \multicolumn
+    :PROPERTIES:
+    :CUSTOM_ID: d1_multicolumn
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \multicolumn{cols}{pos}{text}
+    #+END_SRC
+
+    The =\multicolumn= is used to make an entry that spans several columns. The
+    first mandatory argument, =cols=, specifies the number of columns to
+    span. The second mandatory argument, =pos=, specifies the formatting of the
+    entry; =c= for centred, =l= for flushleft, =r= for flushright. The third
+    mandatory argument, text, specifies what text is to make up the entry.
+
+*** \vline
+    :PROPERTIES:
+    :CUSTOM_ID: d1_vline
+    :LatexCategory: command
+    :END:
+    
+    The =\vline= command will draw a vertical line extending the full height and
+    depth of its row. An \hfill command can be used to move the line to the edge
+    of the column. It can also be used in an @-expression.
+
+** thebibliography					       :bibliography:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_thebibliography
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{thebibliography}{widest-label}
+     \bibitem[label]{cite_key}
+     ...
+   \end{thebibliography}
+   #+END_SRC
+  
+   The thebibliography environment produces a bibliography or reference list. In
+   the article class, this reference list is labelled "References"; in the report
+   class, it is labelled "Bibliography".
+
+   - widest-label :: Text that, when printed, is approximately as wide as the
+                     widest item label produces by the \bibitem commands.
+   - [[#d1_bibitem][\bibitem]] :: Specify a bibliography item.
+   - [[#d1_cite][\cite]] :: Refer to a bibliography item.
+   - [[#d1_nocite][\nocite]] :: Include an item in the bibliography.
+   - [[#d1_UsingBibTeX][Using BibTeX]] :: Automatic generation of bibliographies.
+
+*** \bibitem
+    :PROPERTIES:
+    :CUSTOM_ID: d1_bibitem
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \bibitem[label]{cite_key}
+    #+END_SRC
+
+    The =\bibitem= command generates an entry labelled by label. If the label
+    argument is missing, a number is generated as the label, using the enumi
+    counter. The cite_key is any sequence of letters, numbers, and punctuation
+    symbols not containing a comma. This command writes an entry on the `.aux'
+    file containing cite_key and the item's label. When this `.aux' file is read
+    by the =\begin{document}= command, the item's label is associated with
+    =cite_key=, causing the reference to cite_key by a =\cite= command to
+    produce the associated label.
+
+*** \cite
+    :PROPERTIES:
+    :CUSTOM_ID: d1_cite
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \cite[text]{key_list}
+    #+END_SRC
+
+    The =key_list= argument is a list of citation keys. This command generates
+    an in-text citation to the references associated with the keys in =key_list=
+    by entries on the `.aux' file read by the =\begin{document}= command.
+
+    The optional text argument will appear after the citation,
+    i.e. =\cite[p. 2]{knuth}= might produce "[Knuth, p. 2]".
+
+*** \nocite
+    :PROPERTIES:
+    :CUSTOM_ID: d1_nocite
+    :LatexCategory: command
+    :END:
+    
+    #+BEGIN_SRC latex
+    \nocite{key_list}
+    #+END_SRC
+
+    The =\nocite= command produces no text, but writes =key_list=, which is a
+    list of one or more citation keys, on the `.aux' file.
+
+*** Using BibTeX
+    :PROPERTIES:
+    :CUSTOM_ID: d1_UsingBibTeX
+    :END:
+    
+    If you use the BibTeX program by Oren Patashnik (highly recommended if you
+    need a bibliography of more than a couple of titles) to maintain your
+    bibliography, you don't use the thebibliography environment. Instead, you
+    include the lines
+
+    #+BEGIN_SRC latex
+    \bibliographystyle{style}
+    \bibliography{bibfile}
+    #+END_SRC
+
+    where style refers to a file style.bst, which defines how your citations
+    will look. The standard styles distributed with BibTeX are:
+
+    - =alpha= :: Sorted alphabetically. Labels are formed from name of author
+                 and year of publication.
+    - =plain= :: Sorted alphabetically. Labels are numeric.
+    - =unsrt= :: Like plain, but entries are in order of citation.
+    - =abbrv= :: Like plain, but more compact labels.
+
+    In addition, numerous other BibTeX style files exist tailored to the demands
+    of various publications.
+
+    The argument to =\bibliography= refers to the file bibfile.bib, which should
+    contain your database in BibTeX format. Only the entries referred to via
+    =\cite= and =\nocite= will be listed in the bibliography.
+
+** theorem							       :math:
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-theorem
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{theorem}
+    theorem text
+   \end{theorem}
+   #+END_SRC
+  
+   The theorem environment produces "Theorem x" in boldface followed by your
+   theorem text.
+
+** titlepage
+   :PROPERTIES:
+   :CUSTOM_ID: d1_titlepage
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{titlepage}
+     text
+   \end{titlepage}
+   #+END_SRC
+  
+   The titlepage environment creates a title page, i.e. a page with no printed
+   page number or heading. It also causes the following page to be numbered page
+   one. Formatting the title page is left to you. The =\today= command comes in
+   handy for title pages.
+
+   Note that you can use the =\maketitle= (see section =\maketitle=) command to
+   produce a standard title page.
+
+** verbatim
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-verbatim
+   :LatexCategory: environment
+   :END:
+   
+   #+BEGIN_SRC latex
+   \begin{verbatim}
+     text
+   \end{verbatim}
+   #+END_SRC
+  
+   The verbatim environment is a paragraph-making environment that gets LaTeX to
+   print exactly what you type in. It turns LaTeX into a typewriter with carriage
+   returns and blanks having the same effect that they would on a typewriter.
+
+*** \verb: The macro form of the verbatim environment.
+   :PROPERTIES:
+   :CUSTOM_ID: d1_verb
+   :LatexCategory: command
+   :END:
+
+    #+BEGIN_SRC latex
+    \verb char literal_text char
+    \verb*char literal_text char
+    #+END_SRC
+
+    Typesets literal_text exactly as typed, including special characters and
+    spaces, using a typewriter (=\tt=) type style.  There may be no space
+    between =\verb= or =\verb*= and char (space is shown here only for
+    clarity). The *-form differs only in that spaces are printed as =\verb*| |=.
+
+*** verse
+   :PROPERTIES:
+   :CUSTOM_ID: d1_env-verse
+   :LatexCategory: environment
+   :END:
+   
+    #+BEGIN_SRC latex
+    \begin{verse}
+      text
+    \end{verse}
+    #+END_SRC
+   
+    The verse environment is designed for poetry, though you may find other uses
+    for it.
+
+    The margins are indented on the left and the right. Separate the lines of
+    each stanza with =\\=, and use one or more blank lines to separate the
+    stanzas.
