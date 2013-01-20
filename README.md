@@ -54,23 +54,30 @@ with your tags.
 
    1. Download or clone the package from github:
    
+    <pre><code> 
     $ git clone https://github.com/trietlai/helm-odoc.git ~/path/to/helm-odoc
+    </code></pre> 
 
    2. Edit HELM_DIR variable in Makefile & run make in this
       directory (This step is optional):
-
+    <pre><code> 
     $ cd ~/path/to/helm-odoc
     $ editor Makefile         # edit HELM_DIR variable
     $ make
+    </code></pre> 
 
    3. Add following lines in your .emacs startup:
 
+    <pre><code> 
     (add-to-list 'load-path "~/path/to/helm-odoc")
     (require 'hod-latex) ; Automatically load helm-odoc
+    </code></pre> 
 
     If you want to enable key bindings and "Doc" menu globally:
 
+    <pre><code> 
     (helm-odoc-global-mode 1)
+    </code></pre> 
 
 # Usage
 
