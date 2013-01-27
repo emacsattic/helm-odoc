@@ -1,0 +1,440 @@
+# -*- mode: org; fill-column: 80 -*-
+#+TITLE: Numpy Functions by Category
+#+OPTIONS: toc:2
+#+STARTUP: showall
+
+* numpy Functions by Category
+
+It can be hard to know what functions are available in numpy. This is not a
+complete list, but it does cover most of them. Links point to the example list
+with internal documentation (it's a large page, it may take a moment to load
+before it jumps to the appropriate section).
+
+* Contents: numpy Functions by Category
+
+   1.  [[#d1-head-247cf212da5667c10c2f8395e3da63292e199341][Array creation]]
+
+       1. [[#d1-head-4b43d3dbfa44800b89364739abb6f6032aff4c8f][Numerical]]
+       2. [[#d1-head-e84b9113a90b0bb496e87b7b5132654557952f51][Ones and zeros]]
+       3. [[#d1-head-aed23921c0015f5764b3f21d7b1ef9e8bb135483][From existing data]]
+       4. [[#d1-head-9bc98276c033c7ca121ce2b213050f20d854f4d5][Building matrices]]
+
+   2.  [[#d1-head-bb5864159a3955e9c4d796f74ca472e6d3ed0e95][Reinterpreting arrays]]
+
+       1. [[#d1-head-8e28730b8d0cb988d7f94a882e212d79a53d3156][Types]]
+       2. [[#d1-head-f6a92cada7f41a8e98ffa2ce100f7e725e038673][Kinds of array]]
+       3. [[#d1-head-360105766419dd1cf092c21f4ab88b3662ef3803][Changing the number of dimensions]]
+       4. [[#d1-head-169306c948a29629430cfcd9e32016ebd3c6ab54][Transpose-like operations]]
+       5. [[#d1-head-aa9ee115a9b72a37846f9b92da4ed67279cd672b][Reshaping arrays]]
+
+   3.  [[#d1-head-6206ed77526f33a1bc014ba56b2b2105b83bd8da][Array modification]]
+
+       1. [[#d1-head-ca5d5fe8c131a7ab8f7d7d38796ff84dbf4a2bd0][Joining arrays]]
+       2. [[#d1-head-791c5adc083a32ea8ad51b5ec83f0ff5533bb219][Splitting arrays]]
+       3. [[#d1-head-19d94e29fdc43a7cc0b1dc9af7c3ec25768c37c1][Enlarging arrays]]
+       4. [[#d1-head-037bb44a2427d49573dc8b3f19cfc1ab24e4d892][Adding and removing elements]]
+       5. [[#d1-head-efe14f8c83fec4afb7883cc9a2cd140d5da21052][Rearranging elements]]
+
+   4.  [[#d1-head-93c51d962e0715697aa4c953d4380cdce35f9e17][Indexing]]
+
+       1. [[#d1-head-eada304d14e934492e8a6f54222ee880c8c6c728][Indexing syntax]]
+       2. [[#d1-head-f415da17a4143043b39c36fcf9c6ce7b2ef8fc15][Generating arrays suitable for indexing]]
+       3. [[#d1-head-e7ab041b87d84db62fe7425b81a3217592475d48][Indexing-like operations]]
+       4. [[#d1-head-46f7f02fcbb029a5428ae2482498ad75da296743][Iterating]]
+
+   5.  [[#d1-head-ba02586548bfb6e0e117268bd9ec09074f353717][Logic]]
+   6.  [[#d1-head-846bc0650b424abb444259bb07b6668ce9a06475][Finding things]]
+   7.  [[#d1-head-41de75be0e94f9a4d1ea2ef28f85c26058750d03][Array statistics]]
+   8.  [[#d1-head-48df3949d489548dab6f70acb73a851b2b25acb4][ufuncs]]
+   9.  [[#d1-head-82be7198c6e52f35a55d70e83af20b6a66244354][ufunc methods]]
+   10. [[#d1-head-a00a4285211f8d16765aa85eb54f814ea9593b8b][Functional constructs]]
+   11. [[#d1-head-a7b5dd7e396203c14bef69d7e2bca1d72af84a11][Random numbers]]
+   12. [[#d1-head-6c9145865f4bf85cdbeaa90ee8a70ae1edb9bf21][Array math]]
+
+       1. [[#d1-head-1ffd73d21fc604f531c7f1ea63fe85bd53fc6221][FFT]]
+       2. [[#d1-head-850cc1dc4eb32619c134886dff04469b402c3405][Linear algebra]]
+
+   13. [[#d1-head-2a1b2a92d610e66f51d5779ead8221d39eed3ac3][Array output]]
+   14. [[#d1-head-0f1d75a78aa712d8ae459e1d7085ab72b80bd58e][Other]]
+
+** Array creation
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-247cf212da5667c10c2f8395e3da63292e199341
+    :END:
+
+*** Numerical
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-4b43d3dbfa44800b89364739abb6f6032aff4c8f
+    :END:
+
+    -  [[#d2-arange][arange]](), [[#d2-arrayrange][arrayrange]]()
+    -  [[#d2-linspace][linspace]](), [[#d2-logspace][logspace]]()
+
+*** Ones and zeros
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-e84b9113a90b0bb496e87b7b5132654557952f51
+    :END:
+
+    -  [[#d2-empty][empty]](), [[#d2-empty_like][empty_like]]()
+    -  [[#d2-eye][eye]](), [[#d2-identity][identity]]()
+    -  [[#d2-ones][ones]](), [[#d2-ones_like][ones_like]]()
+    -  [[#d2-tri][tri]](), [[#d2-tril][tril]](), [[#d2-triu][triu]]()
+    -  [[#d2-zeros][zeros]](), [[#d2-zeros_like][zeros_like]]()
+
+*** From existing data
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-aed23921c0015f5764b3f21d7b1ef9e8bb135483
+    :END:
+
+    -  [[#d2-array][array]](), [[#d2-recarray][recarray]]()
+    -  [[#d2-asarray][asarray]](), [[#d2-asanyarray][asanyarray]](), [[#d2-asmatrix][asmatrix]]()
+    -  [[#d2-copy][copy]]()
+    -  [[#d2-fromarrays][fromarrays]](), [[#d2-frombuffer][frombuffer]](), [[#d2-fromfile][fromfile]](), [[#d2-fromfunction][fromfunction]](), [[#d2-fromiter][fromiter]](),
+       [[#d2-loadtxt][loadtxt]]()
+
+*** Building matrices
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-9bc98276c033c7ca121ce2b213050f20d854f4d5
+    :END:
+
+    -  [[#d2-bmat][bmat]]()
+    -  [[#d2-diag][diag]](), [[#d2-diagflat][diagflat]]()
+    -  [[#d2-mat][mat]](), [[#d2-matrix][matrix]]()
+    -  [[#d2-vander][vander]]()
+
+** Reinterpreting arrays
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-bb5864159a3955e9c4d796f74ca472e6d3ed0e95
+    :END:
+
+    -  [[#d2-view][view]]()
+
+*** Types
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-8e28730b8d0cb988d7f94a882e212d79a53d3156
+    :END:
+
+    -  [[#d2-astype][astype]]()
+    -  [[#d2-cast][cast]][]()
+    -  [[#d2-int8][int8]](), [[#d2-int16][int16]](), [[#d2-int32][int32]](), [[#d2-int64][int64]](), [[#d2-int128][int128]]()
+    -  [[#d2-uint8][uint8]](), [[#d2-uint16][uint16]](), [[#d2-uint32][uint32]](), [[#d2-uint64][uint64]](), [[#d2-uint128][uint128]]()
+    -  [[#d2-float16][float16]](), [[#d2-float32][float32]](), [[#d2-float64][float64]](), [[#d2-float96][float96]](), [[#d2-float128][float128]](), [[#d2-float256][float256]]()
+    -  [[#d2-complex32][complex32]](), [[#d2-complex64][complex64]](), [[#d2-complex128][complex128]](), [[#d2-complex192][complex192]](), [[#d2-complex256][complex256]](),
+       [[#d2-complex512][complex512]]()
+    -  [[#d2-bool][bool]]_()
+    -  [[#d2-object][object]]_()
+    -  [[#d2-void][void]](), [[#d2-str][str]]_(), [[#d2-unicode][unicode]]_()
+    -  [[#d2-byte][byte]](), [[#d2-ubyte][ubyte]]()
+    -  [[#d2-short][short]](), [[#d2-ushort][ushort]]()
+    -  [[#d2-intc][intc]](), [[#d2-uintc][uintc]]()
+    -  [[#d2-intp][intp]](), [[#d2-uintp][uintp]]()
+    -  [[#d2-int][int]]_(), [[#d2-uint][uint]]()
+    -  [[#d2-longlong][longlong]](), [[#d2-ulonglong][ulonglong]]()
+    -  [[#d2-single][single]](), [[#d2-csingle][csingle]]()
+    -  [[#d2-float][float]]_(), [[#d2-complex][complex]]_()
+    -  [[#d2-longfloat][longfloat]](), [[#d2-clongfloat][clongfloat]]()
+
+*** Kinds of array
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-f6a92cada7f41a8e98ffa2ce100f7e725e038673
+    :END:
+
+    -  [[#d2-asarray][asarray]]()
+    -  [[#d2-asanyarray][asanyarray]]()
+    -  [[#d2-asmatrix][asmatrix]]()
+
+*** Changing the number of dimensions
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-360105766419dd1cf092c21f4ab88b3662ef3803
+    :END:
+
+    -  [[#d2-atleast_1d][atleast_1d]](), [[#d2-atleast_2d][atleast_2d]](), [[#d2-atleast_3d][atleast_3d]]()
+    -  [[#d2-broadcast][broadcast]]()
+    -  [[#d2-expand_dims][expand_dims]]()
+    -  [[#d2-squeeze][squeeze]]()
+
+*** Transpose-like operations
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-169306c948a29629430cfcd9e32016ebd3c6ab54
+    :END:
+
+    -  [[#d2-rollaxis][rollaxis]]()
+    -  [[#d2-swapaxes][swapaxes]]()
+    -  [[#d2-T][T]], [[#d2-transpose][transpose]]()
+
+*** Reshaping arrays
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-aa9ee115a9b72a37846f9b92da4ed67279cd672b
+    :END:
+
+    -  [[#d2-flat][flat]], [[#d2-flatten][flatten]]()
+    -  [[#d2-ravel][ravel]]()
+    -  [[#d2-reshape][reshape]](), [[#d2-shape][shape]]
+
+** Array modification
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-6206ed77526f33a1bc014ba56b2b2105b83bd8da
+    :END:
+
+*** Joining arrays
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-ca5d5fe8c131a7ab8f7d7d38796ff84dbf4a2bd0
+    :END:
+
+    -  [[#d2-append][append]]()
+    -  [[#d2-column_stack][column_stack]]()
+    -  [[#d2-concatenate][concatenate]]()
+    -  [[#d2-dstack][dstack]](), [[#d2-hstack][hstack]](), [[#d2-vstack][vstack]]()
+
+*** Splitting arrays
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-791c5adc083a32ea8ad51b5ec83f0ff5533bb219
+    :END:
+
+    -  [[#d2-array_split][array_split]]()
+    -  [[#d2-dsplit][dsplit]](), [[#d2-hsplit][hsplit]](), [[#d2-split][split]](), [[#d2-vsplit][vsplit]]()
+
+*** Enlarging arrays
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-19d94e29fdc43a7cc0b1dc9af7c3ec25768c37c1
+    :END:
+
+    -  [[#d2-tile][tile]]()
+    -  [[#d2-repeat][repeat]]()
+
+*** Adding and removing elements
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-037bb44a2427d49573dc8b3f19cfc1ab24e4d892
+    :END:
+
+    -  [[#d2-delete][delete]]()
+    -  [[#d2-insert][insert]]()
+    -  [[#d2-resize][resize]]()
+    -  [[#d2-trim_zeros][trim_zeros]]()
+    -  [[#d2-unique][unique]]()
+
+*** Rearranging elements
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-efe14f8c83fec4afb7883cc9a2cd140d5da21052
+    :END:
+
+    -  [[#d2-fliplr][fliplr]](), [[#d2-flipud][flipud]]()
+    -  [[#d2-reshape][reshape]]()
+    -  [[#d2-rot90][roll]]()
+    -  [[#d2-rot90][rot90]]()
+
+** Indexing
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-93c51d962e0715697aa4c953d4380cdce35f9e17
+    :END:
+
+    -  []
+    -  [[#d2-take][take]]()
+    -  [[#d2-put][put]]()
+    -  [[#d2-putmask][putmask]]()
+
+*** Indexing syntax
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-eada304d14e934492e8a6f54222ee880c8c6c728
+    :END:
+
+    -  [[http://www.scipy.org/Numpy_Example_List_With_Doc][...]]
+    -  [[#d2-slice][slice]]()
+    -  [[#d2-newaxis][newaxis]]
+    -  [[#d2-index_exp][index_exp]][]
+
+*** Generating arrays suitable for indexing
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-f415da17a4143043b39c36fcf9c6ce7b2ef8fc15
+    :END:
+
+    -  [[#d2-c_][c_]][]
+    -  [[#d2-r_][r_]][]
+    -  [[#d2-s_][s_]][]
+    -  [[#d2-nonzero][nonzero]]()
+    -  [[#d2-where][where]]()
+    -  [[#d2-indices][indices]]()
+    -  [[#d2-ix_][ix_]]()
+    -  [[#d2-mgrid][mgrid]][]
+    -  [[#d2-ogrid][ogrid]]()
+
+*** Indexing-like operations
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-e7ab041b87d84db62fe7425b81a3217592475d48
+    :END:
+
+    -  [[#d2-choose][choose]]()
+    -  [[#d2-where][where]]()
+    -  [[#d2-compress][compress]]()
+    -  [[#d2-diag][diag]](), [[#d2-diagonal][diagonal]]()
+    -  [[#d2-select][select]]()
+
+*** Iterating
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-46f7f02fcbb029a5428ae2482498ad75da296743
+    :END:
+
+    -  [[#d2-flat][flat]]
+    -  [[#d2-ndenumerate][ndenumerate]]()
+    -  [[#d2-ndindex][ndindex]]()
+
+** Logic
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-ba02586548bfb6e0e117268bd9ec09074f353717
+    :END:
+
+    -  []
+    -  [[#d2-all][all]](), [[#d2-any][any]]()
+    -  [[#d2-allclose][allclose]]()
+    -  [[#d2-alltrue][alltrue]]()
+    -  [[#d2-nonzero][nonzero]]()
+    -  [[#d2-piecewise][piecewise]]()
+    -  [[#d2-sometrue][sometrue]]()
+
+** Finding things
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-846bc0650b424abb444259bb07b6668ce9a06475
+    :END:
+
+    -  [[#d2-argmax][argmax]](), [[#d2-argmin][argmin]]()
+    -  [[#d2-searchsorted][searchsorted]]()
+
+** Array statistics
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-41de75be0e94f9a4d1ea2ef28f85c26058750d03
+    :END:
+
+    -  [[#d2-average][average]](), [[#d2-mean][mean]]()
+    -  [[#d2-bincount][bincount]](), [[#d2-histogram][histogram]]()
+    -  [[#d2-corrcoef][corrcoef]]()
+    -  [[#d2-cov][cov]]()
+    -  [[#d2-max][max]](), [[#d2-min][min]](), [[#d2-ptp][ptp]]()
+    -  [[#d2-median][median]]()
+    -  [[#d2-std][std]](), [[#d2-var][var]]()
+
+** ufuncs
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-48df3949d489548dab6f70acb73a851b2b25acb4
+    :END:
+
+    -  [[#d2-abs][abs]](), [[#d2-absolute][absolute]]()
+    -  [[#d2-add][add]](), [[#d2-multiply][multiply]]()
+    -  [[#d2-angle][angle]]()
+    -  [[#d2-arccos][arccos]](), [[#d2-arcsin][arcsin]](), [[#d2-arctan][arctan]]()
+    -  [[#d2-arccosh][arccosh]](), [[#d2-arcsinh][arcsinh]](), [[#d2-arctanh][arctanh]]()
+    -  [[#d2-arctan2][arctan2]]()
+    -  [[#d2-bitwise_and][bitwise_and]](), [[#d2-bitwise_or][bitwise_or]](), [[#d2-bitwise_xor][bitwise_xor]]()
+    -  [[#d2-ceil][ceil]](), [[#d2-floor][floor]](), [[#d2-round][round]]()
+    -  [[#d2-conj][conj]](), [[#d2-conjugate][conjugate]]()
+    -  [[#d2-cos][cos]](), [[#d2-sin][sin]](), [[#d2-tan][tan]]()
+    -  [[#d2-cosh][cosh]](), [[#d2-sinh][sinh]](), [[#d2-tanh][tanh]]()
+    -  [[#d2-fix][fix]]()
+    -  [[#d2-hypot][hypot]]()
+    -  [[#d2-logical_and][logical_and]](), [[#d2-logical_not][logical_not]](), [[#d2-logical_or][logical_or]](), [[#d2-logical_xor][logical_xor]]()
+    -  [[#d2-maximum][maximum]](), [[#d2-minimum][minimum]]()
+
+** ufunc methods
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-82be7198c6e52f35a55d70e83af20b6a66244354
+    :END:
+
+    -  [[#d2-accumulate][accumulate]]()
+    -  [[#d2-outer][outer]]()
+    -  [[#d2-reduce][reduce]]()
+
+** Functional constructs
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-a00a4285211f8d16765aa85eb54f814ea9593b8b
+    :END:
+
+    -  [[#d2-apply_along_axis][apply_along_axis]]()
+    -  [[#d2-apply_over_axis][apply_over_axis]]()
+    -  [[#d2-vectorize][vectorize]]()
+
+** Random numbers
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-a7b5dd7e396203c14bef69d7e2bca1d72af84a11
+    :END:
+
+    -  [[#d2-beta][beta]](), [[#d2-binomial][binomial]](), [[#d2-gumbel][gumbel]](), [[#d2-poisson][poisson]](), [[#d2-standard_normal][standard_normal]](), [[#d2-uniform][uniform]](),
+       [[#d2-vonmises][vonmises]](), [[#d2-weibull][weibull]]()
+    -  [[#d2-bytes][bytes]]()
+    -  [[#d2-permutation][permutation]]()
+    -  [[#d2-rand][rand]](), [[#d2-randint][randint]](), [[#d2-randn][randn]]()
+    -  [[#d2-random_integers][random_integers]]()
+    -  [[#d2-random_sample][random_sample]]()
+    -  [[#d2-ranf][ranf]]()
+    -  [[#d2-sample][sample]]()
+    -  [[#d2-seed][seed]]()
+    -  [[#d2-shuffle][shuffle]]()
+
+** Array math
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-6c9145865f4bf85cdbeaa90ee8a70ae1edb9bf21
+    :END:
+
+    -  [[#d2-clip][clip]]()
+    -  [[#d2-cross][cross]]()
+    -  [[#d2-cumprod][cumprod]](), [[#d2-cumsum][cumsum]]()
+    -  [[#d2-diff][diff]]()
+    -  [[#d2-digitize][digitize]]()
+    -  [[#d2-dot][dot]]()
+    -  [[#d2-inner][inner]]()
+    -  [[#d2-outer][outer]]()
+    -  [[#d2-inv][inv]](), [[#d2-pinv][pinv]]()
+    -  [[#d2-poly1d][poly1d]]()
+    -  [[#d2-polyfit][polyfit]]()
+    -  [[#d2-prod][prod]](), [[#d2-sum][sum]]()
+    -  [[#d2-tensordot][tensordot]]()
+    -  [[#d2-vdot][vdot]]()
+
+*** FFT
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-1ffd73d21fc604f531c7f1ea63fe85bd53fc6221
+    :END:
+
+    -  [[#d2-fft][fft]]()
+    -  [[#d2-fftfreq][fftfreq]]()
+    -  [[#d2-fftshift][fftshift]]()
+    -  [[#d2-ifft][ifft]]()
+
+*** Linear algebra
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-850cc1dc4eb32619c134886dff04469b402c3405
+    :END:
+
+    -  [[#d2-inv][inv]]()
+    -  [[#d2-lstsq][lstsq]]()
+    -  [[#d2-solve][solve]]()
+    -  [[#d2-svd][svd]]()
+    -  [[#d2-trace][trace]]()
+
+** Array output
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-2a1b2a92d610e66f51d5779ead8221d39eed3ac3
+    :END:
+
+    -  [[#d2-savetxt][savetxt]]()
+    -  [[#d2-set_printoptions][set_printoptions]]()
+    -  [[#d2-tofile][tofile]]()
+    -  [[#d2-tolist][tolist]]()
+
+** Other
+    :PROPERTIES:
+    :CUSTOM_ID: d1-head-0f1d75a78aa712d8ae459e1d7085ab72b80bd58e
+    :END:
+
+    -  [[#d2-sort][sort]](), [[#d2-argsort][argsort]]()
+    -  [[#d2-binary_repr][binary_repr]]()
+    -  [[#d2-dtype][dtype]]()
+    -  [[#d2-fill][fill]]()
+    -  [[#d2-finfo][finfo]]()
+    -  [[#d2-generic][generic]]
+    -  [[#d2-imag][imag]], [[#d2-real][real]]
+    -  [[#d2-inf][inf]], [[#d2-nan][nan]]
+    -  [[#d2-item][item]]()
+    -  [[#d2-lexsort][lexsort]]()
+    -  [[#d2-ndim][ndim]]
+    -  [[#d2-shape][shape]]
+    -  [[#d2-typeDict][typeDict]]()
+

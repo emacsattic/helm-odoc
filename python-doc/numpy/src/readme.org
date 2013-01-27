@@ -1,0 +1,139 @@
+# -*- mode: org; fill-column: 80 -*-
+#+TITLE: Readme
+#+OPTIONS: toc:2
+#+STARTUP: showall
+
+* Introduction
+
+  This is a collection of snippets that help cleanup & modify HTML pages
+  manually before they are passed to *pandoc* to convert the HTML into Org-mode
+  files.
+  
+  The code should be run from Firebug console and the page should be
+  "jQuerified" with FireQuery plugin. Alternatively, you can use node.js +
+  jsdom + jquery to do the modification, but I'd prefer processing the HTML
+  interactively from Firebug.
+  
+  *NOTE*: Copy & paste the page from HTML panel of Firebug. Using "Save as" from
+  browser doesn't work as we'd like, because it resolves the relative links to
+  absolute paths. Please make sure "Expand All *" from Firebug before copy the
+  source.
+  
+* Numpy Function by Category
+ 
+  The URL of the document: http://www.scipy.org/Numpy_Functions_by_Category
+  
+  #+BEGIN_SRC js
+    function cleanup() {
+       $('body > div[id != "page"]').each(function () {
+          $(this).addClass('data-my-delete');
+       });
+      
+       $('#page > [id != "content"]').each(function () {
+          $(this).addClass('data-my-delete');
+       });
+          
+       $('span.anchor[id ^= "line-"]').each(function () {
+          $(this).addClass('data-my-delete');
+       });
+      
+       $('.data-my-delete').remove();
+    }
+      
+    function adjustLinks() {
+       $('a[href ^= "http://www.scipy.org/Numpy_Example_List_With_Doc#"]').each(function () {
+          var link = $(this).attr('href');
+          link = link.substr(link.indexOf('#') + 1);
+          $(this).attr('href', '#d2-' + link);
+       });
+       $('a[href ^= "#"]').each(function () {
+          var link = $(this).attr('href');
+          link = link.substr(1);
+          $(this).attr('href', '#d1-' + link);
+       });
+    }
+    
+    cleanup();
+    adjustLinks();
+  #+END_SRC
+  
+  Once the page is saved in [[file+emacs:NumpyFunctionsByCategory.html][file+emacs:NumpyFunctionsByCategory.html]] run the
+  below command:
+  
+  #+BEGIN_SRC sh
+    pandoc --columns=80 -f html -t org -o 01-NumpyFunctionsByCategory.org NumpyFunctionsByCategory.html
+  #+END_SRC
+
+* Numpy Example with Doc
+  
+  The URL of the document: [[http://www.scipy.org/Numpy_Example_List_With_Doc]]
+
+  #+BEGIN_SRC js
+    function cleanup() {
+        $('body > div[id != "page"]').each(function () {
+            $(this).addClass('data-my-delete');
+        });
+        
+        $('#page > [id != "content"]').each(function () {
+            $(this).addClass('data-my-delete');
+        });
+        
+        $('span.anchor[id ^= "line-"]').each(function () {
+            $(this).addClass('data-my-delete');
+        });
+    
+        $('#content').children().each(function () {
+            $(this).addClass('data-my-delete');
+            if ( $(this).is('hr') ) {
+                return false;
+            }
+        });
+        
+        $('.data-my-delete').remove();
+    }
+    
+    function getCustomId (heading) {
+        var p = heading.prev('p'),
+        customId = "";
+        
+        if (p) {
+            p.children('span.anchor').each(function () {
+                if ( $(this).is('[id^="line"]') ) {
+                    return true;
+                } else {
+                    customId = $(this).attr('id');
+                    return false;
+                }
+            });
+        }
+        return customId;
+    }
+    
+    function insertCustomID () {
+        $('h3').each(function () {
+            var customId = getCustomId( $(this) );
+            if (customId) {
+                var prop = '<div>:PROPERTIES:</br>' +
+                    ':CUSTOM_ID: ' + customId + '<br/>' +
+                    ':END:<br/></div>';
+                $(prop).insertAfter( $(this) );
+            }
+        });
+    }
+    
+    cleanup();
+    insertCustomID();
+  #+END_SRC
+
+  Once the page is saved in [[file+emacs:NumpyExampleListWithDoc.html]] run the
+  following command:
+  
+  #+BEGIN_SRC sh
+    pandoc --columns=80 -f html -t org -o 02-NumpyExampleListWithDoc.org NumpyExampleListWithDoc.html
+  #+END_SRC
+
+* Process Improvement?
+  It might be possible to write a JavaScript library or jQuery plugin that
+  modifies headings, links, code blocks and tables to display them as Org
+  format. Thus, when we save the page as text we'll have a valid Org file.
+  

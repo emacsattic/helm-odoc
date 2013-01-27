@@ -1,0 +1,192 @@
+<html><head>
+<link href="http://www.scipy.org/images/favicon.ico" rel="shortcut icon">
+<script type="text/javascript" src="NumpyFunctionsByCategory-00_files/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2541099-1";
+urchinTracker();
+</script>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="index,nofollow" name="robots">
+
+<title>Numpy Functions by Category - </title>
+<script src="NumpyFunctionsByCategory-00_files/common.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+&lt;!--// common functions
+
+// We keep here the state of the search box
+searchIsDisabled = false;
+
+function searchChange(e) {
+    // Update search buttons status according to search box content.
+    // Ignore empty or whitespace search term.
+    var value = e.value.replace(/\s+/, '');
+    if (value == '' || searchIsDisabled) { 
+        searchSetDisabled(true);
+    } else {
+        searchSetDisabled(false);
+    }
+}
+
+function searchSetDisabled(flag) {
+    // Enable or disable search
+    document.getElementById('fullsearch').disabled = flag;
+    document.getElementById('titlesearch').disabled = flag;
+}
+
+function searchFocus(e) {
+    // Update search input content on focus
+    if (e.value == 'Search') {
+        e.value = '';
+        e.className = '';
+        searchIsDisabled = false;
+    }
+}
+
+function searchBlur(e) {
+    // Update search input content on blur
+    if (e.value == '') {
+        e.value = 'Search';
+        e.className = 'disabled';
+        searchIsDisabled = true;
+    }
+}
+
+function actionsMenuInit(title) {
+    // Initialize action menu
+    for (i = 0; i &lt; document.forms.length; i++) {
+        var form = document.forms[i];
+        if (form.className == 'actionsmenu') {
+            // Check if this form needs update
+            var div = form.getElementsByTagName('div')[0];
+            var label = div.getElementsByTagName('label')[0];
+            if (label) {
+                // This is the first time: remove label and do buton.
+                div.removeChild(label);
+                var dobutton = div.getElementsByTagName('input')[0];
+                div.removeChild(dobutton);
+                // and add menu title
+                var select = div.getElementsByTagName('select')[0];
+                var item = document.createElement('option');
+                item.appendChild(document.createTextNode(title));
+                item.value = 'show';
+                select.insertBefore(item, select.options[0]);
+                select.selectedIndex = 0;
+            }
+        }
+    }
+}
+//--&gt;
+</script>
+
+
+<link href="NumpyFunctionsByCategory-00_files/common.css" media="all" charset="utf-8" type="text/css" rel="stylesheet">
+<link href="NumpyFunctionsByCategory-00_files/screen.css" media="screen" charset="utf-8" type="text/css" rel="stylesheet">
+<link href="NumpyFunctionsByCategory-00_files/print.css" media="print" charset="utf-8" type="text/css" rel="stylesheet">
+<link href="NumpyFunctionsByCategory-00_files/projection.css" media="projection" charset="utf-8" type="text/css" rel="stylesheet">
+<link type="application/rss+xml" href="http://www.scipy.org/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" title=" Recent Changes" rel="alternate">
+
+<link href="http://www.scipy.org/SciPy" rel="Start">
+<link href="http://www.scipy.org/Numpy_Functions_by_Category?action=raw" title="Wiki Markup" rel="Alternate">
+<link href="http://www.scipy.org/Numpy_Functions_by_Category?action=print" title="Print View" media="print" rel="Alternate">
+<link href="http://www.scipy.org/FindPage" rel="Search">
+<link href="http://www.scipy.org/TitleIndex" rel="Index">
+<link href="http://www.scipy.org/WordIndex" rel="Glossary">
+<link href="http://www.scipy.org/HelpOnFormatting" rel="Help">
+<script src="chrome://firequery-resources/content/jquery.js"></script></head>
+
+<body lang="en" dir="ltr">
+
+
+
+<div lang="en" dir="ltr" id="page">
+
+
+
+
+
+<div lang="en" id="content" dir="ltr"><span id="top" class="anchor"></span>
+<p class="line867">
+</p><h1 id="head-8e384f196de46ac3602ccf8b312af7d1f668e797">numpy Functions by Category</h1>
+<p class="line874">It
+ can be hard to know what functions are available in numpy. This is not a
+ complete list, but it does cover most of them. Links point to the 
+example list with internal documentation (it's a large page, it may take
+ a moment to load before it jumps to the appropriate section). </p><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li><a href="#head-8e384f196de46ac3602ccf8b312af7d1f668e797">numpy Functions by Category</a><ol><li><a href="#head-247cf212da5667c10c2f8395e3da63292e199341">Array creation</a><ol><li><a href="#head-4b43d3dbfa44800b89364739abb6f6032aff4c8f">Numerical</a></li><li><a href="#head-e84b9113a90b0bb496e87b7b5132654557952f51">Ones and zeros</a></li><li><a href="#head-aed23921c0015f5764b3f21d7b1ef9e8bb135483">From existing data</a></li><li><a href="#head-9bc98276c033c7ca121ce2b213050f20d854f4d5">Building matrices</a></li></ol></li><li><a href="#head-bb5864159a3955e9c4d796f74ca472e6d3ed0e95">Reinterpreting arrays</a><ol><li><a href="#head-8e28730b8d0cb988d7f94a882e212d79a53d3156">Types</a></li><li><a href="#head-f6a92cada7f41a8e98ffa2ce100f7e725e038673">Kinds of array</a></li><li><a href="#head-360105766419dd1cf092c21f4ab88b3662ef3803">Changing the number of dimensions</a></li><li><a href="#head-169306c948a29629430cfcd9e32016ebd3c6ab54">Transpose-like operations</a></li><li><a href="#head-aa9ee115a9b72a37846f9b92da4ed67279cd672b">Reshaping arrays</a></li></ol></li><li><a href="#head-6206ed77526f33a1bc014ba56b2b2105b83bd8da">Array modification</a><ol><li><a href="#head-ca5d5fe8c131a7ab8f7d7d38796ff84dbf4a2bd0">Joining arrays</a></li><li><a href="#head-791c5adc083a32ea8ad51b5ec83f0ff5533bb219">Splitting arrays</a></li><li><a href="#head-19d94e29fdc43a7cc0b1dc9af7c3ec25768c37c1">Enlarging arrays</a></li><li><a href="#head-037bb44a2427d49573dc8b3f19cfc1ab24e4d892">Adding and removing elements</a></li><li><a href="#head-efe14f8c83fec4afb7883cc9a2cd140d5da21052">Rearranging elements</a></li></ol></li><li><a href="#head-93c51d962e0715697aa4c953d4380cdce35f9e17">Indexing</a><ol><li><a href="#head-eada304d14e934492e8a6f54222ee880c8c6c728">Indexing syntax</a></li><li><a href="#head-f415da17a4143043b39c36fcf9c6ce7b2ef8fc15">Generating arrays suitable for indexing</a></li><li><a href="#head-e7ab041b87d84db62fe7425b81a3217592475d48">Indexing-like operations</a></li><li><a href="#head-46f7f02fcbb029a5428ae2482498ad75da296743">Iterating</a></li></ol></li><li><a href="#head-ba02586548bfb6e0e117268bd9ec09074f353717">Logic</a></li><li><a href="#head-846bc0650b424abb444259bb07b6668ce9a06475">Finding things</a></li><li><a href="#head-41de75be0e94f9a4d1ea2ef28f85c26058750d03">Array statistics</a></li><li><a href="#head-48df3949d489548dab6f70acb73a851b2b25acb4">ufuncs</a></li><li><a href="#head-82be7198c6e52f35a55d70e83af20b6a66244354">ufunc methods</a></li><li><a href="#head-a00a4285211f8d16765aa85eb54f814ea9593b8b">Functional constructs</a></li><li><a href="#head-a7b5dd7e396203c14bef69d7e2bca1d72af84a11">Random numbers</a></li><li><a href="#head-6c9145865f4bf85cdbeaa90ee8a70ae1edb9bf21">Array math</a><ol><li><a href="#head-1ffd73d21fc604f531c7f1ea63fe85bd53fc6221">FFT</a></li><li><a href="#head-850cc1dc4eb32619c134886dff04469b402c3405">Linear algebra</a></li></ol></li><li><a href="#head-2a1b2a92d610e66f51d5779ead8221d39eed3ac3">Array output</a></li><li><a href="#head-0f1d75a78aa712d8ae459e1d7085ab72b80bd58e">Other</a></li></ol></li></ol></div> 
+<h2 id="head-247cf212da5667c10c2f8395e3da63292e199341">Array creation</h2>
+<p class="line867">
+</p><h3 id="head-4b43d3dbfa44800b89364739abb6f6032aff4c8f">Numerical</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#arange"> arange</a>(), <a href="NumpyExampleListWithDoc.org#arrayrange"> arrayrange</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#linspace"> linspace</a>(), <a href="NumpyExampleListWithDoc.org#logspace"> logspace</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-e84b9113a90b0bb496e87b7b5132654557952f51">Ones and zeros</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#empty"> empty</a>(), <a href="NumpyExampleListWithDoc.org#empty_like"> empty_like</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#eye"> eye</a>(), <a href="NumpyExampleListWithDoc.org#identity"> identity</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ones"> ones</a>(), <a href="NumpyExampleListWithDoc.org#ones_like"> ones_like</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#tri"> tri</a>(), <a href="NumpyExampleListWithDoc.org#tril"> tril</a>(), <a href="NumpyExampleListWithDoc.org#triu"> triu</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#zeros"> zeros</a>(), <a href="NumpyExampleListWithDoc.org#zeros_like"> zeros_like</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-aed23921c0015f5764b3f21d7b1ef9e8bb135483">From existing data</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#array"> array</a>(), <a href="NumpyExampleListWithDoc.org#recarray"> recarray</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#asarray"> asarray</a>(), <a href="NumpyExampleListWithDoc.org#asanyarray"> asanyarray</a>(), <a href="NumpyExampleListWithDoc.org#asmatrix"> asmatrix</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#copy"> copy</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fromarrays"> fromarrays</a>(), <a href="NumpyExampleListWithDoc.org#frombuffer"> frombuffer</a>(), <a href="NumpyExampleListWithDoc.org#fromfile"> fromfile</a>(), <a href="NumpyExampleListWithDoc.org#fromfunction"> fromfunction</a>(), <a href="NumpyExampleListWithDoc.org#fromiter"> fromiter</a>(), <a href="NumpyExampleListWithDoc.org#loadtxt"> loadtxt</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-9bc98276c033c7ca121ce2b213050f20d854f4d5">Building matrices</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#bmat"> bmat</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#diag"> diag</a>(), <a href="NumpyExampleListWithDoc.org#diagflat"> diagflat</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#mat"> mat</a>(), <a href="NumpyExampleListWithDoc.org#matrix"> matrix</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#vander"> vander</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-bb5864159a3955e9c4d796f74ca472e6d3ed0e95">Reinterpreting arrays</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#view"> view</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-8e28730b8d0cb988d7f94a882e212d79a53d3156">Types</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#astype"> astype</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#cast"> cast</a>[]() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#int8"> int8</a>(), <a href="NumpyExampleListWithDoc.org#int16"> int16</a>(), <a href="NumpyExampleListWithDoc.org#int32"> int32</a>(), <a href="NumpyExampleListWithDoc.org#int64"> int64</a>(), <a href="NumpyExampleListWithDoc.org#int128"> int128</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#uint8"> uint8</a>(), <a href="NumpyExampleListWithDoc.org#uint16"> uint16</a>(), <a href="NumpyExampleListWithDoc.org#uint32"> uint32</a>(), <a href="NumpyExampleListWithDoc.org#uint64"> uint64</a>(), <a href="NumpyExampleListWithDoc.org#uint128"> uint128</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#float16"> float16</a>(), <a href="NumpyExampleListWithDoc.org#float32"> float32</a>(), <a href="NumpyExampleListWithDoc.org#float64"> float64</a>(), <a href="NumpyExampleListWithDoc.org#float96"> float96</a>(), <a href="NumpyExampleListWithDoc.org#float128"> float128</a>(), <a href="NumpyExampleListWithDoc.org#float256"> float256</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#complex32"> complex32</a>(), <a href="NumpyExampleListWithDoc.org#complex64"> complex64</a>(), <a href="NumpyExampleListWithDoc.org#complex128"> complex128</a>(), <a href="NumpyExampleListWithDoc.org#complex192"> complex192</a>(), <a href="NumpyExampleListWithDoc.org#complex256"> complex256</a>(), <a href="NumpyExampleListWithDoc.org#complex512"> complex512</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#bool"> bool</a>_() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#object"> object</a>_() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#void"> void</a>(), <a href="NumpyExampleListWithDoc.org#str"> str</a>_(), <a href="NumpyExampleListWithDoc.org#unicode"> unicode</a>_() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#byte"> byte</a>(), <a href="NumpyExampleListWithDoc.org#ubyte"> ubyte</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#short"> short</a>(), <a href="NumpyExampleListWithDoc.org#ushort"> ushort</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#intc"> intc</a>(), <a href="NumpyExampleListWithDoc.org#uintc"> uintc</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#intp"> intp</a>(), <a href="NumpyExampleListWithDoc.org#uintp"> uintp</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#int"> int</a>_(), <a href="NumpyExampleListWithDoc.org#uint"> uint</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#longlong"> longlong</a>(), <a href="NumpyExampleListWithDoc.org#ulonglong"> ulonglong</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#single"> single</a>(), <a href="NumpyExampleListWithDoc.org#csingle"> csingle</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#float"> float</a>_(), <a href="NumpyExampleListWithDoc.org#complex"> complex</a>_() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#longfloat"> longfloat</a>(), <a href="NumpyExampleListWithDoc.org#clongfloat"> clongfloat</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-f6a92cada7f41a8e98ffa2ce100f7e725e038673">Kinds of array</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#asarray"> asarray</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#asanyarray"> asanyarray</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#asmatrix"> asmatrix</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-360105766419dd1cf092c21f4ab88b3662ef3803">Changing the number of dimensions</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#atleast_1d"> atleast_1d</a>(), <a href="NumpyExampleListWithDoc.org#atleast_2d"> atleast_2d</a>(), <a href="NumpyExampleListWithDoc.org#atleast_3d"> atleast_3d</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#broadcast"> broadcast</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#expand_dims"> expand_dims</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#squeeze"> squeeze</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-169306c948a29629430cfcd9e32016ebd3c6ab54">Transpose-like operations</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#rollaxis"> rollaxis</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#swapaxes"> swapaxes</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#T"> T</a>, <a href="NumpyExampleListWithDoc.org#transpose"> transpose</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-aa9ee115a9b72a37846f9b92da4ed67279cd672b">Reshaping arrays</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#flat"> flat</a>, <a href="NumpyExampleListWithDoc.org#flatten"> flatten</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ravel"> ravel</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#reshape"> reshape</a>(), <a href="NumpyExampleListWithDoc.org#shape"> shape</a> </p></li></ul><p class="line867">
+</p><h2 id="head-6206ed77526f33a1bc014ba56b2b2105b83bd8da">Array modification</h2>
+<p class="line867">
+</p><h3 id="head-ca5d5fe8c131a7ab8f7d7d38796ff84dbf4a2bd0">Joining arrays</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#append"> append</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#column_stack"> column_stack</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#concatenate"> concatenate</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#dstack"> dstack</a>(), <a href="NumpyExampleListWithDoc.org#hstack"> hstack</a>(), <a href="NumpyExampleListWithDoc.org#vstack"> vstack</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-791c5adc083a32ea8ad51b5ec83f0ff5533bb219">Splitting arrays</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#array_split"> array_split</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#dsplit"> dsplit</a>(), <a href="NumpyExampleListWithDoc.org#hsplit"> hsplit</a>(), <a href="NumpyExampleListWithDoc.org#split"> split</a>(), <a href="NumpyExampleListWithDoc.org#vsplit"> vsplit</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-19d94e29fdc43a7cc0b1dc9af7c3ec25768c37c1">Enlarging arrays</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#tile"> tile</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#repeat"> repeat</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-037bb44a2427d49573dc8b3f19cfc1ab24e4d892">Adding and removing elements</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#delete"> delete</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#insert"> insert</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#resize"> resize</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#trim_zeros"> trim_zeros</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#unique"> unique</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-efe14f8c83fec4afb7883cc9a2cd140d5da21052">Rearranging elements</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fliplr"> fliplr</a>(), <a href="NumpyExampleListWithDoc.org#flipud"> flipud</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#reshape"> reshape</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#rot90"> roll</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#rot90"> rot90</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-93c51d962e0715697aa4c953d4380cdce35f9e17">Indexing</h2>
+<ul><li>[] </li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#take"> take</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#put"> put</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#putmask"> putmask</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-eada304d14e934492e8a6f54222ee880c8c6c728">Indexing syntax</h3>
+<ul><li><p class="line891"><a href="http://www.scipy.org/Numpy_Example_List_With_Doc"> ...</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#slice"> slice</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#newaxis"> newaxis</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#index_exp"> index_exp</a>[] </p></li></ul><p class="line867">
+</p><h3 id="head-f415da17a4143043b39c36fcf9c6ce7b2ef8fc15">Generating arrays suitable for indexing</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#c_"> c_</a>[] </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#r_"> r_</a>[] </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#s_"> s_</a>[] </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#nonzero"> nonzero</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#where"> where</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#indices"> indices</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ix_"> ix_</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#mgrid"> mgrid</a>[] </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ogrid"> ogrid</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-e7ab041b87d84db62fe7425b81a3217592475d48">Indexing-like operations</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#choose"> choose</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#where"> where</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#compress"> compress</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#diag"> diag</a>(), <a href="NumpyExampleListWithDoc.org#diagonal"> diagonal</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#select"> select</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-46f7f02fcbb029a5428ae2482498ad75da296743">Iterating</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#flat"> flat</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ndenumerate"> ndenumerate</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ndindex"> ndindex</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-ba02586548bfb6e0e117268bd9ec09074f353717">Logic</h2>
+<ul><li>[] </li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#all"> all</a>(), <a href="NumpyExampleListWithDoc.org#any"> any</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#allclose"> allclose</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#alltrue"> alltrue</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#nonzero"> nonzero</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#piecewise"> piecewise</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#sometrue"> sometrue</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-846bc0650b424abb444259bb07b6668ce9a06475">Finding things</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#argmax"> argmax</a>(), <a href="NumpyExampleListWithDoc.org#argmin"> argmin</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#searchsorted"> searchsorted</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-41de75be0e94f9a4d1ea2ef28f85c26058750d03">Array statistics</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#average"> average</a>(), <a href="NumpyExampleListWithDoc.org#mean"> mean</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#bincount"> bincount</a>(), <a href="NumpyExampleListWithDoc.org#histogram"> histogram</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#corrcoef"> corrcoef</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#cov"> cov</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#max"> max</a>(), <a href="NumpyExampleListWithDoc.org#min"> min</a>(), <a href="NumpyExampleListWithDoc.org#ptp"> ptp</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#median"> median</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#std"> std</a>(), <a href="NumpyExampleListWithDoc.org#var"> var</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-48df3949d489548dab6f70acb73a851b2b25acb4">ufuncs</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#abs"> abs</a>(), <a href="NumpyExampleListWithDoc.org#absolute"> absolute</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#add"> add</a>(), <a href="NumpyExampleListWithDoc.org#multiply"> multiply</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#angle"> angle</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#arccos"> arccos</a>(), <a href="NumpyExampleListWithDoc.org#arcsin"> arcsin</a>(), <a href="NumpyExampleListWithDoc.org#arctan"> arctan</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#arccosh"> arccosh</a>(), <a href="NumpyExampleListWithDoc.org#arcsinh"> arcsinh</a>(), <a href="NumpyExampleListWithDoc.org#arctanh"> arctanh</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#arctan2"> arctan2</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#bitwise_and"> bitwise_and</a>(), <a href="NumpyExampleListWithDoc.org#bitwise_or"> bitwise_or</a>(), <a href="NumpyExampleListWithDoc.org#bitwise_xor"> bitwise_xor</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ceil"> ceil</a>(), <a href="NumpyExampleListWithDoc.org#floor"> floor</a>(), <a href="NumpyExampleListWithDoc.org#round"> round</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#conj"> conj</a>(), <a href="NumpyExampleListWithDoc.org#conjugate"> conjugate</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#cos"> cos</a>(), <a href="NumpyExampleListWithDoc.org#sin"> sin</a>(), <a href="NumpyExampleListWithDoc.org#tan"> tan</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#cosh"> cosh</a>(), <a href="NumpyExampleListWithDoc.org#sinh"> sinh</a>(), <a href="NumpyExampleListWithDoc.org#tanh"> tanh</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fix"> fix</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#hypot"> hypot</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#logical_and"> logical_and</a>(), <a href="NumpyExampleListWithDoc.org#logical_not"> logical_not</a>(), <a href="NumpyExampleListWithDoc.org#logical_or"> logical_or</a>(), <a href="NumpyExampleListWithDoc.org#logical_xor"> logical_xor</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#maximum"> maximum</a>(), <a href="NumpyExampleListWithDoc.org#minimum"> minimum</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-82be7198c6e52f35a55d70e83af20b6a66244354">ufunc methods</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#accumulate"> accumulate</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#outer"> outer</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#reduce"> reduce</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-a00a4285211f8d16765aa85eb54f814ea9593b8b">Functional constructs</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#apply_along_axis"> apply_along_axis</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#apply_over_axis"> apply_over_axis</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#vectorize"> vectorize</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-a7b5dd7e396203c14bef69d7e2bca1d72af84a11">Random numbers</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#beta"> beta</a>(), <a href="NumpyExampleListWithDoc.org#binomial"> binomial</a>(), <a href="NumpyExampleListWithDoc.org#gumbel"> gumbel</a>(), <a href="NumpyExampleListWithDoc.org#poisson"> poisson</a>(), <a href="NumpyExampleListWithDoc.org#standard_normal"> standard_normal</a>(), <a href="NumpyExampleListWithDoc.org#uniform"> uniform</a>(), <a href="NumpyExampleListWithDoc.org#vonmises"> vonmises</a>(), <a href="NumpyExampleListWithDoc.org#weibull"> weibull</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#bytes"> bytes</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#permutation"> permutation</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#rand"> rand</a>(), <a href="NumpyExampleListWithDoc.org#randint"> randint</a>(), <a href="NumpyExampleListWithDoc.org#randn"> randn</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#random_integers"> random_integers</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#random_sample"> random_sample</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ranf"> ranf</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#sample"> sample</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#seed"> seed</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#shuffle"> shuffle</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-6c9145865f4bf85cdbeaa90ee8a70ae1edb9bf21">Array math</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#clip"> clip</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#cross"> cross</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#cumprod"> cumprod</a>(), <a href="NumpyExampleListWithDoc.org#cumsum"> cumsum</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#diff"> diff</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#digitize"> digitize</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#dot"> dot</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#inner"> inner</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#outer"> outer</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#inv"> inv</a>(), <a href="NumpyExampleListWithDoc.org#pinv"> pinv</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#poly1d"> poly1d</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#polyfit"> polyfit</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#prod"> prod</a>(), <a href="NumpyExampleListWithDoc.org#sum"> sum</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#tensordot"> tensordot</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#vdot"> vdot</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-1ffd73d21fc604f531c7f1ea63fe85bd53fc6221">FFT</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fft"> fft</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fftfreq"> fftfreq</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fftshift"> fftshift</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ifft"> ifft</a>() </p></li></ul><p class="line867">
+</p><h3 id="head-850cc1dc4eb32619c134886dff04469b402c3405">Linear algebra</h3>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#inv"> inv</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#lstsq"> lstsq</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#solve"> solve</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#svd"> svd</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#trace"> trace</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-2a1b2a92d610e66f51d5779ead8221d39eed3ac3">Array output</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#savetxt"> savetxt</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#set_printoptions"> set_printoptions</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#tofile"> tofile</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#tolist"> tolist</a>() </p></li></ul><p class="line867">
+</p><h2 id="head-0f1d75a78aa712d8ae459e1d7085ab72b80bd58e">Other</h2>
+<ul><li><p class="line891"><a href="NumpyExampleListWithDoc.org#sort"> sort</a>(), <a href="NumpyExampleListWithDoc.org#argsort"> argsort</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#binary_repr"> binary_repr</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#dtype"> dtype</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#fill"> fill</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#finfo"> finfo</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#generic"> generic</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#imag"> imag</a>, <a href="NumpyExampleListWithDoc.org#real"> real</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#inf"> inf</a>, <a href="NumpyExampleListWithDoc.org#nan"> nan</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#item"> item</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#lexsort"> lexsort</a>() </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#ndim"> ndim</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#shape"> shape</a> </p></li><li><p class="line891"><a href="NumpyExampleListWithDoc.org#typeDict"> typeDict</a>() </p></li></ul><span id="bottom" class="anchor"></span></div>
+
+
+</div>
+
+
+
+
+</body></html>
