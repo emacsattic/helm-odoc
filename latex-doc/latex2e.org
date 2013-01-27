@@ -3572,6 +3572,9 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | Γ  \Gamma | Δ  \Delta | Θ  \Theta | Λ  \Lambda  |
+    | Ξ  \Xi    | Π  \Pi    | Σ  \Sigma | ϒ  \Upsilon |
+    | Φ  \Phi   | Ψ  \Psi   | Ω  \Omega |             |
 
 **** Γ \Gamma
      :PROPERTIES:
@@ -3632,6 +3635,14 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | α  \alpha    | β  \beta  | γ  \gamma   | δ  \delta      |
+    | ϵ  \epsilon  | ζ  \zeta  | η  \eta     | θ  \theta      |
+    | ι  \iota     | κ  \kappa | λ  \lambda  | μ  \mu         |
+    | ν  \nu       | ξ  \xi    | π  \pi      | ρ  \rho        |
+    | σ  \sigma    | τ  \tau   | υ  \upsilon | ϕ  \phi        |
+    | χ  \chi      | ψ  \psi   | ω  \omega   | ε  \varepsilon |
+    | ϑ  \vartheta | ϖ  \varpi | ϱ  \varrho  | ς  \varsigma   |
+    | φ  \varphi   |           |             |                |
     
 **** α \alpha
      :PROPERTIES:
@@ -3782,6 +3793,15 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ± \pm           | ∓ \mp            | × \times         | ÷ \div             |
+    | ∗ \ast          | ⋆ \star          | ∘ \circ          | ∙ \bullet          |
+    | ⋅ \cdot         | ∩ \cap           | ∪ \cup           | ⊎ \uplus           |
+    | ⊓ \sqcap        | ∨ \vee           | ∧ \wedge         | ∖ \setminus        |
+    | ≀ \wr           | ⋄ \diamond       | △ \bigtriangleup | ▽ \bigtriangledown |
+    | ◁ \triangleleft | ▷ \triangleright | \lhd             | \rhd               |
+    | \unlhd          | \unrhd           | ⊕ \oplus         | ⊖ \ominus          |
+    | ⊗ \otimes       | ∅ \oslash        | ⊙ \odot          | ○ \bigcirc         |
+    | † \dagger       | ‡ \ddagger       | ⨿ \amalg         |                    |
 
 **** ± \pm
      :PROPERTIES:
@@ -3962,6 +3982,16 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ≤ \leq      | ≥ \geq        | ∎ \qed        | ≡ \equiv  |          |
+    | ⊧ \models   | ≺ \prec       | ≻ \succ       | ∼ \sim    |          |
+    | ⟂ \perp     | ⪯ \preceq     | ⪰ \succeq     | ≃ \simeq  |          |
+    | ∣ \mid      | ≪ \ll         | ≫ \gg         | ≍ \asymp  |          |
+    | ∥ \parallel | ⊂ \subset     | ⊃ \supset     | ≈ \approx |          |
+    | ⋈ \bowtie   | ⊆ \subseteq   | ⊇ \supseteq   | ≅ \cong   |          |
+    | ⨝ \Join     | ⊏ \sqsubset   | ⊐ \sqsupset   | ≠ \neq    |          |
+    | ⌣ \smile    | ⊑ \sqsubseteq | ⊒ \sqsupseteq | ≐ \doteq  |          |
+    | ⌢ \frown    | ∈ \in         | ∋ \ni         | ∝ \propto | ⊢ \vdash |
+    | ⊣ \dashv    |               |               |           |          |
 
 **** ≤ \leq
      :PROPERTIES:
@@ -4157,7 +4187,22 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
- 
+    | ← \leftarrow          | ⇐ \Leftarrow          |
+    | → \rightarrow         | ⇒ \Rightarrow         |
+    | ↔ \leftrightarrow     | ⇔ \Leftrightarrow     |
+    | ↦ \mapsto             | ↩ \hookleftarrow      |
+    | ↼ \leftharpoonup      | ↽ \leftharpoondown    |
+    | ⟵ \longleftarrow      | ⟸ \Longleftarrow      |
+    | ⟶ \longrightarrow     | ⟹ \Longrightarrow     |
+    | ⟷ \longleftrightarrow | ⟺ \Longleftrightarrow |
+    | ⟼ \longmapsto         | ↪ \hookrightarrow     |
+    | ⇀ \rightharpoonup     | ⇁ \rightharpoondown   |
+    | ↑ \uparrow            | ⇑ \Uparrow            |
+    | ↓ \downarrow          | ⇓ \Downarrow          |
+    | ↕ \updownarrow        | ⇕ \Updownarrow        |
+    | ↗ \nearrow            | ↘ \searrow            |
+    | ↙ \swarrow            | ↖ nwarrow             |
+
 **** ← \leftarrow
      :PROPERTIES:
      :LatexCategory: command
@@ -4312,7 +4357,8 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
- 
+    |… \ldots| ⋯ \cdots| ⋮ \vdots| ⋱ \ddots| : \colon|
+
 **** … \ldots
      :PROPERTIES:
      :LatexCategory: command
@@ -4337,11 +4383,19 @@ output.
      :PROPERTIES:
      :LatexCategory: command
      :END:
-  
+     
 *** Misc Symbol
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ∇ \nabla       | ℵ \aleph     | ′ \prime     | ∀ \forall   |
+    | ∞ \infty       | ℏ \hbar      | ∅ \emptyset  | ∃ \exists   |
+    | √ \surd        | \Box         | △ \triangle  | \Diamond    |
+    | ı \imath       | 𝚥 \jmath     | ℓ \ell       | ¬ \neg      |
+    | ̸ \not          | ⊤ \top       | ♭ \flat      | ♮ \natural  |
+    | ♯ \sharp       | ℘ \wp        | ⊥ \bot       | ♣ \clubsuit |
+    | ♢ \diamondsuit | ♡ \heartsuit | ♠ \spadesuit | ℧ \mho      |
+    | ℜ \Re          | ℑ \Im        | ∠ \angle     | ∂ partial   |
  
 **** ∇ \nabla
      :PROPERTIES:
@@ -4507,6 +4561,10 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ∑ \sum      | ∏ \prod     | ∐ \coprod  | ∫ \int       |
+    | ∮ \oint     | ⋂ \bigcap   | ⋃ \bigcup  | ⨆ \bigsqcup  |
+    | ⋁ \bigvee   | ⋀ \bigwedge | ⨀ \bigodot | ⨂ \bigotimes |
+    | ⨁ \bigoplus | ⨄ \biguplus |            |              |
  
 **** ∑ \sum
      :PROPERTIES:
@@ -4582,6 +4640,14 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | \arccos | \arcsin | \arctan | \arg    |
+    | \cos    | \cosh   | \cot    | \coth   |
+    | \csc    | \deg    | \det    | \dim    |
+    | \exp    | \gcd    | \hom    | \inf    |
+    | \ker    | \lg     | \lim    | \liminf |
+    | \limsup | \ln     | \log    | \max    |
+    | \min    | \Pr     | \sec    | \sin    |
+    | \sinh   | \sup    | \tan    | \tanh   |
  
 **** \arccos
      :PROPERTIES:
@@ -4747,6 +4813,11 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | \{            | \}            | ⌊ \lfloor | ⌋ \rfloor  |
+    | ⌈ \lceil      | ⌉ \rceil      | ⟨ \langle | ⟩ \rangle  |
+    | ⎱ \rmoustache | ⎰ \lmoustache | \rgroup   | \lgroup    |
+    | \ \backslash  | \|            |           | \arrowvert |
+    | \Arrowvert    | \bracevert    |           |            |
  
 **** \{
      :PROPERTIES:
@@ -4758,42 +4829,42 @@ output.
      :LatexCategory: command
      :END:
   
-**** ⌊ \\lfloor
+**** ⌊ \lfloor
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⌋ \\rfloor
+**** ⌋ \rfloor
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⌈ \\lceil
+**** ⌈ \lceil
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⌉ \\rceil
+**** ⌉ \rceil
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⟨ \\langle
+**** ⟨ \langle
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⟩ \\rangle
+**** ⟩ \rangle
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⎱ \\rmoustache
+**** ⎱ \rmoustache
      :PROPERTIES:
      :LatexCategory: command
      :END:
   
-**** ⎰ \\lmoustache
+**** ⎰ \lmoustache
      :PROPERTIES:
      :LatexCategory: command
      :END:
@@ -4808,7 +4879,7 @@ output.
      :LatexCategory: command
      :END:
   
-**** \ \\backslash
+**** \ \backslash
      :PROPERTIES:
      :LatexCategory: command
      :END:
@@ -4837,6 +4908,9 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ̃ \widetilde | ̂ \widehat  | ⃖ \overleftarrow | \overrightarrow |
+    | \overline   | \underline | ︷ \overbrace   | ︸ \underbrace  |
+    | √ \sqrt     | \frac      |                 |                 |
  
 **** ̃ \widetilde
      :PROPERTIES:
@@ -4894,7 +4968,10 @@ output.
     :CUSTOM_ID: d2_sec_accents
     :LatexCategory: command
     :END:
- 
+    | ̂ \hat   | \acute  | ̄ \bar   | ̇ \dot |
+    | ̆ \breve | ̌ \check | ̀ \grave | ⃗ \vec |
+    | ̈ \ddot  | ̃ tilde  |         |        |
+
 **** ̂ \hat
      :PROPERTIES:
      :LatexCategory: command
@@ -4949,6 +5026,7 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ϝ \digamma | ϰ \varkappa | ℶ \beth | ℸ \daleth | ℷ \gimel |
   
 **** ϝ \digamma
      :PROPERTIES:
@@ -4979,7 +5057,10 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
-  
+    | \varGamma | \varDelta | \varTheta | \varLambda  |
+    | \varXi    | \varPi    | \varSigma | \varUpsilon |
+    | \varPhi   | \varPsi   | \varOmega |             |
+
 **** \varGamma
      :PROPERTIES:
      :LatexCategory: command
@@ -5039,6 +5120,15 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | \dashrightarrow      | \dashleftarrow         | ⇇ \leftleftarrows    |
+    | ⇆ \leftrightarrows   | ⇚ \Lleftarrow          | ↞ \twoheadleftarrow  |
+    | ↢ \leftarrowtail     | ↫ \looparrowleft       | ⇋ \leftrightharpoons |
+    | ↶ \curvearrowleft    | \circlearrowleft       | ↰ \Lsh               |
+    | ⇈ \upuparrows        | ↿ \upharpoonleft       | ⇃ \downharpoonleft   |
+    | ⊸ \multimap          | ↭ \leftrightsquigarrow | ↬ \looparrowright    |
+    | ⇌ \rightleftharpoons | ↷ \curvearrowright     | \circlearrowright    |
+    | ↱ \Rsh               | ⇊ \downdownarrows      | ↾ \upharpoonright    |
+    | ⇂ \downharpoonright  | ↝ rightsquigarrow      |                      |
   
 **** \dashrightarrow
      :PROPERTIES:
@@ -5174,6 +5264,8 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ↚ \nleftarrow  | ↛ \nrightarrow     | ⇍ \nLeftarrow      |
+    | ⇏ \nRightarrow | ↮ \nleftrightarrow | ⇎ \nLeftrightarrow |
   
 **** ↚ \nleftarrow
      :PROPERTIES:
@@ -5209,6 +5301,17 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ≦ \leqq           | ⩽ \leqslant      | ⪕ \eqslantless     |
+    | ≲ \lesssim        | ⪅ \lessapprox    | ≊ \approxeq        |
+    | ⋖ \lessdot        | ⋘ \lll           | ≶ \lessgtr         |
+    | ⋚ \lesseqgtr      | ⪋ \lesseqqgtr    | \doteqdot          |
+    | ≓ \risingdotseq   | ≒ \fallingdotseq | ∽ \backsim         |
+    | ⋍ \backsimeq      | ⫅ \subseteqq     | ⋐ \Subset          |
+    | ⊏ \sqsubset       | ≼ \preccurlyeq   | ⋞ \curlyeqprec     |
+    | ≾ \precsim        | ⪷ \precapprox    | ⊲ \vartriangleleft |
+    | ⊴ \trianglelefteq | ⊨ \vDash         | ⊪ \Vvdash          |
+    | ⌣ \smallsmile     | ⌢ \smallfrown    | ≏ \bumpeq          |
+    | ≎ Bumpeq          |                  |                    |
   
 **** ≦ \leqq
      :PROPERTIES:
@@ -5369,6 +5472,18 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ≧ \geqq               | ⩾ \geqslant         | ⪖ \eqslantgtr      |
+    | ≳ \gtrsim             | ⪆ \gtrapprox        | ⋗ \gtrdot          |
+    | ⋙ \ggg                | ≷ \gtrless          | ⋛ \gtreqless       |
+    | ⪌ \gtreqqless         | ≖ \eqcirc           | ≗ \circeq          |
+    | ≜ \triangleq          | ∼ \thicksim         | ≈ \thickapprox     |
+    | ⫆ \supseteqq          | ⋑ \Supset           | ⊐ \sqsupset        |
+    | ≽ \succcurlyeq        | ⋟ \curlyeqsucc      | ≿ \succsim         |
+    | ⪸ \succapprox         | ⊳ \vartriangleright | ⊵ \trianglerighteq |
+    | ⊩ \Vdash              | ∣ \shortmid         | ∥ \shortparallel   |
+    | ≬ \between            | ⋔ \pitchfork        | ∝ \varpropto       |
+    | ◀ \blacktriangleleft  | ∴ \therefore        | ϶ \backepsilon     |
+    | ▶ \blacktriangleright | ∵ \because          |                    |
   
 **** ≧ \geqq
      :PROPERTIES:
@@ -5549,6 +5664,15 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ≮ \nless         | ≰ \nleq            | \nleqslant    |
+    | \nleqq           | ⪇ \lneq            | ≨ \lneqq      |
+    | \lvertneqq       | ⋦ \lnsim           | ⪉ \lnapprox   |
+    | ⊀ \nprec         | \npreceq           | ⋨ \precnsim   |
+    | ⪹ \precnapprox   | ≁ \nsim            | ∤ \nshortmid  |
+    | ∤ \nmid          | ⊬ \nvdash          | ⊭ \nvDash     |
+    | ⋪ \ntriangleleft | ⋬ \ntrianglelefteq | ⊈ \nsubseteq  |
+    | ⊊ \subsetneq     | \varsubsetneq      | ⫋ \subsetneqq |
+    | \varsubsetneqq   |                    |               |
   
 **** ≮ \nless
      :PROPERTIES:
@@ -5679,6 +5803,15 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ≯ \ngtr           | ≱ \ngeq             | \ngeqslant        |
+    | \ngeqq            | ⪈ \gneq             | ≩ \gneqq          |
+    | \gvertneqq        | ⋧ \gnsim            | ⪊ \gnapprox       |
+    | ⊁ \nsucc          | \nsucceq            | ⋩ \succnsim       |
+    | ⪺ \succnapprox    | ≇ \ncong            | ∦ \nshortparallel |
+    | ∦ \nparallel      | ⊭ \nvDash           | ⊯ \nVDash         |
+    | ⋫ \ntriangleright | ⋭ \ntrianglerighteq | ⊉ \nsupseteq      |
+    | \nsupseteqq       | ⊋ \supsetneq        | \varsupsetneq     |
+    | ⫌ \supsetneqq     | \varsupsetneqq      |                   |
   
 **** ≯ \ngtr
      :PROPERTIES:
@@ -5814,6 +5947,14 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ∔ \dotplus         | ∖ \smallsetminus | ⋒ \Cap            |
+    | ⋓ \Cup             | ⊼ \barwedge      | ⊻ \veebar         |
+    | ⌆ \doublebarwedge  | ⊟ \boxminus      | ⊠ \boxtimes       |
+    | ⊡ \boxdot          | ⊞ \boxplus       | ⋇ \divideontimes  |
+    | ⋉ \ltimes          | ⋊ \rtimes        | ⋋ \leftthreetimes |
+    | ⋌ \rightthreetimes | ⋏ \curlywedge    | ⋎ \curlyvee       |
+    | ⊝ \circleddash     | ⊛ \circledast    | ⊚ \circledcirc    |
+    | \centerdot         | ⊺ intercal       |                   |
   
 **** ∔ \dotplus
      :PROPERTIES:
@@ -5934,6 +6075,15 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ℏ \hbar           | ℏ \hslash        | ▵ \vartriangle       |
+    | ▿ \triangledown   | □ \square        | ◊ \lozenge           |
+    | Ⓢ \circledS       | ∠ \angle         | ∡ \measuredangle     |
+    | ∄ \nexists        | ℧ \mho           | Ⅎ \Finv              |
+    | ⅁ \Game           | 𝕜 \Bbbk          | ‵ \backprime         |
+    | ∅ \varnothing     | ▴ \blacktriangle | ▾ \blacktriangledown |
+    | ■ \blacksquare    | ⧫ \blacklozenge  | ★ \bigstar           |
+    | ∢ \sphericalangle | ∁ \complement    | ð \eth               |
+    | ╱ \diagup         | ╲ diagdown       |                      |
   
 **** ℏ \hbar
      :PROPERTIES:
@@ -6069,6 +6219,7 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | ⃛ \dddot | ⃜ \ddddot |
     
 **** ⃛ \dddot
      :PROPERTIES:
@@ -6084,6 +6235,10 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | \bigl       | \bigr       | \Bigl       | \Bigr    |
+    | \biggl      | \biggr      | \Biggl      | \Biggr   |
+    | \lvert      | \rvert      | \lVert      | \rVert   |
+    | ⌜ \ulcorner | ⌝ \urcorner | ⌞ \llcorner | lrcorner |
     
 **** \bigl
      :PROPERTIES:
@@ -6169,6 +6324,12 @@ output.
     :PROPERTIES:
     :LatexCategory: command
     :END:
+    | \nobreakdash | \leftroot    | \uproot    | \accentedsymbol |
+    | \xleftarrow  | \xrightarrow | \overset   | \underset       |
+    | \dfrac       | \genfrac     | \tfrac     | \binom          |
+    | \dbinom      | \tbinom      | \smash     | \eucal          |
+    | \boldsymbol  | \text        | \intertext | \substack       |
+    | \subarray    | \sideset     |            |                 |
     
 **** \nobreakdash
      :PROPERTIES:
